@@ -97,6 +97,10 @@
   .semana b { font: 600 40px/1 "Fraunces"; color: var(--terra); display: block; margin-bottom: 10px; }
   .semana p { margin: 0; color: var(--suave); font-size: 15px; }
   @media (max-width: 860px) { .semanas { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .semanas { grid-template-columns: 1fr; } }
+  .pilha { overflow: hidden; }
+  .vidro .frase { font-size: clamp(24px, min(3.2vw, 5.5vh), 42px); }
+  .momento { max-width: min(560px, calc(100% - 32px)); }
 
   /* Para quem */
   .quem { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
