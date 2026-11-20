@@ -4,19 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>souaracele · IA sem complicação, saindo quentinho</title>
-  <meta name="description" content="Aracele Silva: testo, construo e vendo ferramentas de IA do jeito mais simples. ArrastAí, Fábrica de Reels, LotadoAí, e-book e serviços sob encomenda.">
+  <meta name="description" content="Aracele Silva: testo, construo e vendo ferramentas de IA do jeito mais simples. ArrastAí, Fábrica de Reels, LotadoAí, cartilha e serviços sob encomenda.">
   <meta property="og:title" content="souaracele · IA sem complicação">
-  <meta property="og:description" content="O cardápio da Aracele: apps, cursos e serviços de IA feitos na minha cozinha.">
-  <meta property="og:image" content="assets/frames/desktop/f_0001.webp">
-  <meta name="theme-color" content="#F0E2C9">
+  <meta property="og:description" content="Um café, uma xícara e um universo de IA. Tudo feito na minha cozinha.">
+  <meta property="og:image" content="assets/filme/desktop/f_0040.webp">
+  <meta name="theme-color" content="#0B0907">
   <link rel="icon" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/frames/desktop/f_0001.webp">
-  <link rel="stylesheet" href="estilo.css">
+  <link rel="preload" as="image" href="assets/filme/desktop/f_0001.webp">
+  <link rel="stylesheet" href="filme.css">
 </head>
 <body>
+
+<div class="luz-cursor" aria-hidden="true"></div>
 
 <header class="topo">
   <a href="#inicio" class="marca" aria-label="souaracele, início">
@@ -24,7 +26,6 @@
     <span class="marca-texto">sou<b>aracele</b></span>
   </a>
   <nav class="menu" aria-label="Seções">
-    <a href="#sobre">Sobre</a>
     <a href="#cardapio">Cardápio</a>
     <a href="#encomenda">Sob encomenda</a>
     <a href="#historia">Minha história</a>
@@ -34,185 +35,150 @@
 
 <main>
 
-  <!-- ABERTURA: a xícara gira com a rolagem -->
-  <section id="inicio" class="cine" style="--altura: 420vh">
+  <!-- ABERTURA: um filme de 3 cenas que anda com a rolagem -->
+  <section id="inicio" class="cine" aria-label="Abertura">
     <div class="cine-palco">
       <canvas class="cine-canvas" aria-hidden="true"></canvas>
       <div class="cine-vinheta"></div>
+      <div class="cine-barra" aria-hidden="true"><span></span></div>
 
-      <div class="selo" aria-hidden="true">
-        <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
-          <text><textPath href="#circ">SAINDO QUENTINHO · IA SEM COMPLICAÇÃO · SAINDO QUENTINHO · </textPath></text></svg>
-        <span>☕</span>
+      <div class="momento" data-de="0" data-ate="0.27">
+        <p class="etiqueta">Saindo quentinho</p>
+        <h1 class="titulo-abertura">IA sem complicação,<br>com <em>informação de verdade.</em></h1>
       </div>
-
-      <div class="momento" data-de="0" data-ate="0.28">
-        <div class="painel painel--vidro">
-          <p class="etiqueta">Saindo quentinho todo dia</p>
-          <h1 class="titulo-abertura">IA sem complicação, com <em>informação de verdade.</em></h1>
-          <p class="apoio">Oi, eu sou a Aracele. Testo, construo e vendo o que funciona, e sempre te digo quanto custa.</p>
-        </div>
-      </div>
-      <div class="momento momento--direita" data-de="0.36" data-ate="0.64">
-        <div class="painel painel--vidro">
-          <p class="destaque">Tudo aqui eu fiz na minha cozinha: apps, cursos e vídeos, sem saber programar.</p>
-        </div>
+      <div class="momento momento--direita" data-de="0.36" data-ate="0.62">
+        <p class="destaque">Eu testo as novidades de IA <em>antes de você gastar tempo.</em></p>
+        <p class="apoio">E te conto o que é grátis, o que tem limite e quanto custa.</p>
       </div>
       <div class="momento momento--centro" data-de="0.72" data-ate="1">
-        <div class="painel painel--vidro">
-          <p class="destaque">Puxa uma cadeira. O cardápio de hoje está na mesa.</p>
-          <a href="#cardapio" class="botao">Ver o cardápio</a>
-        </div>
+        <p class="destaque">Mergulha comigo. <em>Tudo aqui foi feito com IA.</em></p>
+        <a href="#cardapio" class="botao">Ver o cardápio</a>
       </div>
 
-      <div class="cine-dica" aria-hidden="true"><span></span>role</div>
+      <div class="cine-dica" aria-hidden="true"><span></span>role devagar</div>
     </div>
   </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
+    <span>Saindo quentinho</span><i>✦</i><span>IA sem complicação</span><i>✦</i><span>Feito na minha cozinha</span><i>✦</i><span>Grátis, com limite ou pago: eu te conto</span><i>✦</i>
+    <span>Saindo quentinho</span><i>✦</i><span>IA sem complicação</span><i>✦</i><span>Feito na minha cozinha</span><i>✦</i><span>Grátis, com limite ou pago: eu te conto</span><i>✦</i>
+  </div></div>
 
   <!-- 01 SOBRE -->
-  <section id="sobre" class="secao">
-    <img class="arte arte--direita" src="assets/img/sobre.webp" alt="" loading="lazy">
-    <div class="secao-grade">
-      <div class="painel revelar">
-        <span class="rotulo">01 · Prazer, Aracele</span>
-        <h2>Eu testo por você, antes de você gastar tempo.</h2>
-        <p>Sou gerente operacional e fui atrás da inteligência artificial para resolver uma dor real: uma rotina puxada, cheia de tarefa repetida. Sem saber programar, aprendi a montar automações e aplicativos.</p>
-        <p>Hoje mostro no <a href="https://www.instagram.com/souaracele.ia/" target="_blank" rel="noopener">@souaracele.ia</a> o que é grátis, o que tem limite e quanto custa o que é pago. E coloco à venda só o que eu mesma uso.</p>
-        <ul class="selos-custo">
-          <li><b>Grátis</b> sem pagar nada</li>
-          <li><b>Grátis com limite</b> dá para usar até um ponto</li>
-          <li><b>Pago</b> e eu digo quanto custa</li>
-        </ul>
-      </div>
+  <section id="sobre" class="bloco bloco--sobre">
+    <div class="sobre-foto revelar"><img src="assets/img/sobre.webp" alt="Aracele Silva, com a mão no queixo, sorrindo" loading="lazy"></div>
+    <div class="sobre-texto">
+      <span class="rotulo">01 · Prazer, Aracele</span>
+      <h2 class="palavras">Sem saber programar, eu aprendi a fazer a IA trabalhar por mim.</h2>
+      <p class="revelar">Sou gerente operacional e fui atrás da inteligência artificial para resolver uma rotina puxada, cheia de tarefa repetida. Hoje mostro no <a href="https://www.instagram.com/souaracele.ia/" target="_blank" rel="noopener">@souaracele.ia</a> o que funciona de verdade, e coloco à venda só o que eu mesma uso.</p>
+      <ul class="selos revelar">
+        <li><b>Grátis</b>sem pagar nada</li>
+        <li><b>Com limite</b>dá para usar até um ponto</li>
+        <li><b>Pago</b>e eu digo quanto custa</li>
+      </ul>
     </div>
   </section>
 
-  <!-- 02 CARDÁPIO: todos os produtos -->
-  <section id="cardapio" class="secao secao--cardapio">
-    <img class="recorte recorte--cardapio" src="assets/img/aponta-baixo.webp" alt="Aracele sorrindo e apontando para o cardápio" loading="lazy">
-    <div class="painel painel--cabecalho revelar">
+  <!-- 02 CARDÁPIO: cartões de luz em 3D -->
+  <section id="cardapio" class="bloco bloco--cardapio">
+    <canvas class="particulas" aria-hidden="true"></canvas>
+    <div class="cabeca">
       <span class="rotulo">02 · O cardápio</span>
-      <h2>Feito na minha cozinha, servido para você.</h2>
+      <h2 class="palavras">Feito na minha cozinha, servido para você.</h2>
+      <p class="revelar">Passe o mouse ou o dedo nos cartões.</p>
     </div>
-
-    <div class="menu-papel revelar">
-      <div class="vapor" aria-hidden="true"><i></i><i></i><i></i></div>
-
-      <h3 class="menu-grupo">Prato do dia</h3>
-      <article class="prato prato--destaque">
-        <div class="prato-linha"><h4>ArrastAí</h4><span class="pontos"></span><span class="preco">15 dias grátis</span></div>
-        <p>Seus prazos num quadro só. Cada prazo vira um card que muda de cor quando vence e te avisa com som de manhã. Lembrete pelo WhatsApp em um clique. Sem cartão para testar.</p>
-        <a class="link-prato" href="https://www.arrastai.com.br" target="_blank" rel="noopener">Testar o ArrastAí →</a>
-      </article>
-
-      <h3 class="menu-grupo">Saindo do forno</h3>
-      <article class="prato">
-        <div class="prato-linha"><h4>Fábrica de Reels no Automático</h4><span class="pontos"></span><span class="preco">Black Friday 27/11</span></div>
-        <p>O estúdio que escreve o roteiro, edita com legenda e posta o reel por você. Funciona até para quem não quer aparecer.</p>
-        <a class="link-prato" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Me avisa no lançamento →</a>
-      </article>
-
-      <h3 class="menu-grupo">Em preparo</h3>
-      <article class="prato">
-        <div class="prato-linha"><h4>LotadoAí</h4><span class="pontos"></span><span class="preco">Salões fundadores</span></div>
-        <p>A Lia atende o WhatsApp do salão ou da barbearia e marca o horário sozinha, até de madrugada. Estou escolhendo os primeiros salões para testar junto comigo.</p>
-        <a class="link-prato" href="https://www.instagram.com/lotadoai/" target="_blank" rel="noopener">Quero ser salão fundador →</a>
-      </article>
-
-      <h3 class="menu-grupo">Na estante</h3>
-      <article class="prato prato--livro">
-        <img src="assets/img/ebook.webp" alt="Capa do e-book Dinheiro sem Briga para Casais" loading="lazy">
-        <div>
-          <div class="prato-linha"><h4>Dinheiro sem Briga para Casais</h4><span class="pontos"></span><span class="preco">Cartilha para imprimir</span></div>
-          <p>Sete conversas para transformar a tensão com dinheiro em parceria dentro de casa. Cartas para recortar, caderno do casal e cartazes de geladeira.</p>
-          <a class="link-prato" href="dinheiro-sem-briga.html">Conhecer a cartilha →</a>
-        </div>
-      </article>
-
-      <h3 class="menu-grupo">Cortesia da casa</h3>
-      <article class="prato">
-        <div class="prato-linha"><h4>Cardápio do Quentinho</h4><span class="pontos"></span><span class="preco">Grátis</span></div>
-        <p>Todo vídeo meu vira um prato, com os links e os comandos prontos para copiar. Comenta QUENTINHO no post que eu te mando no direct.</p>
-        <a class="link-prato" href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">Abrir o Cardápio do Quentinho →</a>
-      </article>
-      <article class="prato">
-        <div class="prato-linha"><h4>Higgsfield</h4><span class="pontos"></span><span class="preco">Link de indicação</span></div>
-        <p>A ferramenta que eu uso para vídeos e imagens com IA. Você não paga nada a mais e me ajuda a continuar criando.</p>
-        <a class="link-prato" href="https://higgsfield.ai?fpr=aracele-4cd60f" target="_blank" rel="sponsored noopener">Conhecer o Higgsfield →</a>
-      </article>
+    <div class="cartas">
+      <a class="carta carta--destaque revelar" href="https://www.arrastai.com.br" target="_blank" rel="noopener">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Prato do dia</span>
+        <h3>ArrastAí</h3>
+        <p>Seus prazos num quadro só. Cada card muda de cor quando vence e te avisa com som de manhã.</p>
+        <span class="carta-preco">15 dias grátis, sem cartão →</span>
+      </a>
+      <a class="carta revelar" href="dinheiro-sem-briga.html">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Na estante</span>
+        <h3>Dinheiro sem Briga para Casais</h3>
+        <p>A cartilha para imprimir com 7 conversas, cartas para recortar e o pacto do casal.</p>
+        <span class="carta-preco">Conhecer a cartilha →</span>
+      </a>
+      <a class="carta revelar" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Saindo do forno</span>
+        <h3>Fábrica de Reels no Automático</h3>
+        <p>Roteiro, edição com legenda e postagem do reel. Funciona até para quem não quer aparecer.</p>
+        <span class="carta-preco">Me avisa no lançamento →</span>
+      </a>
+      <a class="carta revelar" href="https://www.instagram.com/lotadoai/" target="_blank" rel="noopener">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Em preparo</span>
+        <h3>LotadoAí</h3>
+        <p>A Lia atende o WhatsApp do salão e marca o horário sozinha, até de madrugada.</p>
+        <span class="carta-preco">Quero ser salão fundador →</span>
+      </a>
+      <a class="carta revelar" href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Cortesia da casa</span>
+        <h3>Cardápio do Quentinho</h3>
+        <p>Todo vídeo meu vira um prato com links e comandos prontos. Comenta QUENTINHO que eu mando.</p>
+        <span class="carta-preco">Grátis →</span>
+      </a>
+      <a class="carta revelar" href="https://higgsfield.ai?fpr=aracele-4cd60f" target="_blank" rel="sponsored noopener">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Na minha bancada</span>
+        <h3>Higgsfield</h3>
+        <p>A ferramenta que eu uso para vídeos e imagens com IA. Link de indicação: você não paga a mais.</p>
+        <span class="carta-preco">Conhecer →</span>
+      </a>
     </div>
   </section>
 
-  <!-- 03 SOB ENCOMENDA: serviços -->
-  <section id="encomenda" class="secao secao--larga">
-    <img class="arte arte--fundo arte--suave" src="assets/img/contato.webp" alt="" loading="lazy">
-    <div class="painel painel--cabecalho revelar">
+  <!-- 03 SOB ENCOMENDA -->
+  <section id="encomenda" class="bloco bloco--encomenda">
+    <div class="eco" aria-hidden="true">FEITO COM IA</div>
+    <div class="cabeca">
       <span class="rotulo">03 · Sob encomenda</span>
-      <h2>Para o seu negócio, eu cozinho junto.</h2>
-      <p>As mesmas ferramentas que uso no meu dia a dia, feitas sob medida para você. Este site é um exemplo.</p>
+      <h2 class="palavras">Para o seu negócio, eu cozinho junto.</h2>
+      <p class="revelar">Este site é um exemplo: o filme da abertura foi todo gerado com IA.</p>
     </div>
-    <div class="cartoes">
-      <article class="painel cartao revelar">
-        <span class="num">i</span>
-        <h3>Vídeo com o seu clone</h3>
-        <p>Você manda fotos e um áudio. Eu entrego vídeos com a sua cara e a sua voz, sem você gravar nada.</p>
-      </article>
-      <article class="painel cartao revelar">
-        <span class="num">ii</span>
-        <h3>Site que se mexe</h3>
-        <p>Página como esta, com vídeo que anda na rolagem, botão de contato e cadastro de clientes.</p>
-      </article>
-      <article class="painel cartao revelar">
-        <span class="num">iii</span>
-        <h3>Reels todo mês</h3>
-        <p>Roteiro com gancho, edição com legenda e chamada para o direct. Você aprova e eu entrego.</p>
-      </article>
-      <article class="painel cartao revelar">
-        <span class="num">iv</span>
-        <h3>App sob medida</h3>
-        <p>Aquela planilha que vive dando trabalho vira um aplicativo simples, do jeito da sua rotina.</p>
-      </article>
-    </div>
+    <ol class="servicos">
+      <li class="revelar"><span class="n">01</span><div><h3>Vídeo com o seu clone</h3><p>Você manda fotos e um áudio. Eu entrego vídeos com a sua cara e a sua voz, sem você gravar.</p></div></li>
+      <li class="revelar"><span class="n">02</span><div><h3>Site que é um filme</h3><p>Como este: cenas que andam com a rolagem, cadastro de clientes e botão de contato.</p></div></li>
+      <li class="revelar"><span class="n">03</span><div><h3>Reels todo mês</h3><p>Roteiro com gancho, edição com legenda e chamada para o direct. Você aprova e eu entrego.</p></div></li>
+      <li class="revelar"><span class="n">04</span><div><h3>App sob medida</h3><p>Aquela planilha que dá trabalho vira um aplicativo simples, do jeito da sua rotina.</p></div></li>
+    </ol>
     <a class="botao revelar" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Pedir orçamento no direct</a>
   </section>
 
-  <!-- 04 HISTÓRIA -->
-  <section id="historia" class="secao">
-    <img class="arte arte--esquerda" src="assets/img/historia.webp" alt="" loading="lazy">
-    <div class="secao-grade secao-grade--direita">
-      <div class="painel revelar">
-        <span class="rotulo">04 · Minha história</span>
-        <h2>Do balcão à gestão, um passo de cada vez.</h2>
-        <ol class="linha-tempo">
-          <li>Garçonete</li>
-          <li>Telefonista</li>
-          <li>Recepcionista</li>
-          <li>Chefe de recepção</li>
-          <li>Gerente operacional</li>
-          <li class="hoje">Hoje: ensino IA na prática para quem quer aprender sem pagar caro</li>
-        </ol>
-        <p>Na empresa onde trabalho, cuido de equipes em bases pelo Brasil todo. Foi lá que criei, sem programar, o painel de e-mails que se atualiza sozinho, o controle de frota, de estoque e de horas extras, e o guia de campo da equipe. Isso é experiência, não está à venda, mas é a prova de que funciona.</p>
-        <blockquote>“Ser líder é servir e inspirar.”</blockquote>
-      </div>
+  <!-- 04 HISTÓRIA: a linha se acende com a rolagem -->
+  <section id="historia" class="bloco bloco--historia">
+    <div class="historia-foto"><img src="assets/img/historia.webp" alt="Aracele no escritório segurando uma caneca" loading="lazy"></div>
+    <div class="historia-texto">
+      <span class="rotulo">04 · Minha história</span>
+      <h2 class="palavras">Do balcão à gestão, um passo de cada vez.</h2>
+      <ol class="trilha">
+        <li>Garçonete</li>
+        <li>Telefonista</li>
+        <li>Recepcionista</li>
+        <li>Chefe de recepção</li>
+        <li>Gerente operacional</li>
+        <li class="hoje">Hoje: ensino IA na prática para quem quer aprender sem pagar caro</li>
+      </ol>
+      <p class="revelar">Na empresa onde trabalho, cuido de equipes em bases pelo Brasil todo. Foi lá que criei, sem programar, o painel de e-mails que se atualiza sozinho, o controle de frota, de estoque e de horas extras. Não está à venda, mas é a prova de que funciona.</p>
+      <blockquote class="revelar">“Ser líder é servir e inspirar.”</blockquote>
     </div>
   </section>
 
-  <!-- 05 MESA: lista de e-mails -->
-  <section id="mesa" class="secao secao--contato">
-    <img class="recorte recorte--mesa" src="assets/img/comemora.webp" alt="" loading="lazy">
-    <div class="painel painel--form revelar">
+  <!-- 05 MESA -->
+  <section id="mesa" class="bloco bloco--mesa">
+    <div class="vapor" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="mesa-painel revelar">
       <span class="rotulo">05 · Um lugar na mesa</span>
-      <h2>Quer receber primeiro o que sai quentinho?</h2>
+      <h2>Quer receber primeiro o que sai <em>quentinho?</em></h2>
       <p>Deixe seu e-mail. Eu aviso quando sair novidade, material gratuito e os próximos lançamentos.</p>
       <form class="form" novalidate>
-        <div class="campo">
-          <label for="f-nome">Nome</label>
-          <input id="f-nome" name="nome" autocomplete="name" required>
-        </div>
-        <div class="campo">
-          <label for="f-email">E-mail</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-        </div>
+        <div class="campo"><label for="f-nome">Nome</label><input id="f-nome" name="nome" autocomplete="name" required></div>
+        <div class="campo"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
         <label class="consentimento campo--inteiro"><input type="checkbox" name="consent" required> Aceito receber e-mails da Aracele. Posso sair quando quiser.</label>
         <input type="text" name="_honey" class="pote" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit" class="botao campo--inteiro">Guardar meu lugar</button>
@@ -224,11 +190,9 @@
 </main>
 
 <footer class="rodape">
-  <div class="painel rodape-painel">
-    <span class="marca-texto">sou<b>aracele</b></span>
-    <nav class="rodape-links"><a href="https://www.instagram.com/souaracele.ia/" target="_blank" rel="noopener">Instagram</a><a href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">Cardápio do Quentinho</a><a href="https://www.arrastai.com.br" target="_blank" rel="noopener">ArrastAí</a></nav>
-    <span>© <span data-ano></span> souaracele · Ideias com propósito, tecnologia com humanidade.</span>
-  </div>
+  <span class="marca-texto">sou<b>aracele</b></span>
+  <nav><a href="https://www.instagram.com/souaracele.ia/" target="_blank" rel="noopener">Instagram</a><a href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">Cardápio do Quentinho</a><a href="https://www.arrastai.com.br" target="_blank" rel="noopener">ArrastAí</a><a href="dinheiro-sem-briga.html">Dinheiro sem Briga</a></nav>
+  <small>© <span data-ano></span> souaracele · Ideias com propósito, tecnologia com humanidade. O filme da abertura foi gerado com IA.</small>
 </footer>
 
 <a class="whats" target="_blank" rel="noopener" aria-label="Falar comigo no direct do Instagram">
@@ -237,5 +201,6 @@
 
 <script src="config.js"></script>
 <script src="app.js"></script>
+<script src="vivo.js"></script>
 </body>
 </html>
