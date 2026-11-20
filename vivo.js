@@ -87,13 +87,17 @@
       const r = prazo.getBoundingClientRect();
       const q = Math.min(1, Math.max(0, -r.top / (prazo.offsetHeight - innerHeight)));
       prazo.style.setProperty("--f2", Math.min(1, Math.max(0, (q - 0.04) / 0.1)).toFixed(3));
-      const estado = q < 0.22 ? ["ok", "Vence em 5 dias", 15] : q < 0.42 ? ["atencao", "Vence amanhã", 55] : ["hoje", "Vence hoje!", 90];
+      const lim = (a, b) => Math.min(1, Math.max(0, (q - a) / (b - a)));
+      prazo.style.setProperty("--caos", lim(0.0, 0.08).toFixed(3));
+      prazo.style.setProperty("--junta", lim(0.2, 0.32).toFixed(3));
+      prazo.style.setProperty("--card", lim(0.28, 0.36).toFixed(3));
+      const estado = q < 0.44 ? ["ok", "Vence em 5 dias", 15] : q < 0.56 ? ["atencao", "Vence amanhã", 55] : ["hoje", "Vence hoje!", 90];
       if (cardPrazo.dataset.estado !== estado[0]) {
         cardPrazo.dataset.estado = estado[0];
         cardPrazo.querySelector(".card-prazo-status b").textContent = estado[1];
         cardPrazo.style.setProperty("--gasto", estado[2] + "%");
       }
-      const f3 = Math.min(1, Math.max(0, (q - 0.42) / 0.12));
+      const f3 = Math.min(1, Math.max(0, (q - 0.56) / 0.1));
       prazo.style.setProperty("--f3", f3.toFixed(3));
       prazoFinal.classList.toggle("pronto", f3 > 0.5);
     }
