@@ -272,8 +272,11 @@ blockquote { margin: 18px 0 0; font: italic 400 clamp(22px, 2vw, 30px)/1.3 var(-
 /* Celular: foto ocupa a parte de cima (rosto e xícara visíveis abaixo do menu), frase embaixo sem cobrir nada */
 @media (max-width: 760px) {
   .cine-foto { background: #0B0907; }
-  .cine-foto img.cine-foto-frente { left: 0; width: 100%; height: 66svh; top: 0; bottom: auto; object-position: 50% 72%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent); mask-image: linear-gradient(to bottom, #000 82%, transparent); }
+  /* A foto começa logo abaixo do menu e termina acima da frase; a largura é limitada para caber do rosto até a xícara */
+  .cine-foto img.cine-foto-frente { --alt: calc(100svh - 72px - 5svh - 178px); top: 72px; bottom: auto; height: var(--alt);
+    width: min(100%, calc(var(--alt) * .5625 / .72)); left: 50%; translate: -50% 0; object-fit: cover; object-position: 50% 71%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent), linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 80%, transparent), linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-composite: intersect; }
   .momento--entrada { left: 16px; right: 16px; width: auto; top: auto; bottom: 5svh; transform: translateY(30px); }
   .momento--entrada.ativo { transform: none; }
   .momento--entrada .destaque { font-size: clamp(21px, 6vw, 26px); }
