@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dinheiro sem Briga para Casais · cartilha para imprimir</title>
+<meta name="description" content="7 conversas para transformar tensão financeira em parceria. Cartas para recortar, caderno do casal e cartazes de geladeira. Imprima hoje em casa.">
+<meta property="og:title" content="Dinheiro sem Briga para Casais">
+<meta property="og:description" content="A cartilha com 7 conversas para o casal parar de brigar por dinheiro. Imprima hoje.">
+<meta property="og:image" content="assets/dsb/pagina-01.webp">
+<meta name="theme-color" content="#1F3A2B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --verde: #1F3A2B; --verde2: #2E5240; --terra: #C0653A; --terra-claro: #F6E3D6; --creme: #F6EFE3; --tinta: #23201B; --suave: #5F574C; --linha: rgb(35 32 27 / .12); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--creme); color: var(--tinta); font: 400 17px/1.6 "Inter Tight", system-ui, sans-serif; overflow-x: clip; }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.1; margin: 0 0 .5em; text-wrap: balance; }
+  h2 { font-size: clamp(30px, 4.4vw, 48px); color: var(--verde); }
+  h3 { font-size: 21px; color: var(--verde); }
+  p { margin: 0 0 1em; text-wrap: pretty; }
+  .larg { width: min(1120px, 100% - 32px); margin: 0 auto; }
+  section { padding: clamp(64px, 10vw, 120px) 0; }
+  .sobre { font: 700 12px/1 "Inter Tight"; letter-spacing: .24em; text-transform: uppercase; color: var(--terra); display: flex; gap: 12px; align-items: center; margin-bottom: 18px; }
+  .sobre::before { content: ""; width: 32px; height: 1.5px; background: currentColor; }
+  .botao { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--terra); color: #fff; font: 700 17px/1 "Inter Tight"; text-decoration: none; padding: 20px 34px; border-radius: 999px; box-shadow: 0 10px 30px rgb(192 101 58 / .35); transition: transform .3s, filter .3s; }
+  .botao:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .botao small { font-weight: 500; opacity: .85; }
+
+  /* Topo */
+  .hero { background: var(--verde); color: #F3EAD9; padding: 28px 0 0; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; width: 700px; height: 700px; border: 1px solid rgb(192 101 58 / .35); border-radius: 50%; right: -260px; top: -300px; }
+  .topo { display: flex; justify-content: space-between; align-items: center; font-size: 14px; opacity: .85; }
+  .topo b { font-family: "Fraunces"; font-size: 18px; font-weight: 600; }
+  .hero-grade { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 56px 0 72px; position: relative; }
+  .hero h1 { font-size: clamp(44px, 6.4vw, 82px); color: #F3EAD9; }
+  .hero h1 span { color: var(--terra); display: block; }
+  .hero h1 small { display: block; font-size: .5em; font-weight: 400; margin-top: .15em; }
+  .hero .lead { font-size: 19px; opacity: .9; max-width: 520px; margin: 20px 0 30px; }
+  .hero .garantias { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; margin-top: 22px; opacity: .8; }
+  .pilha { position: relative; height: 520px; }
+  .pilha img { position: absolute; width: 58%; border-radius: 4px; box-shadow: 0 30px 60px rgb(0 0 0 / .45); }
+  .pilha .a { left: 0; top: 40px; transform: rotate(-7deg); }
+  .pilha .b { right: 0; top: 70px; transform: rotate(6deg); }
+  .pilha .c { left: 21%; top: 0; z-index: 2; transform: rotate(-1deg); width: 60%; }
+  @media (max-width: 860px) { .hero-grade { grid-template-columns: 1fr; padding-top: 36px; } .pilha { height: 400px; max-width: 420px; margin: 0 auto; width: 100%; } }
+
+  /* Abertura cinematográfica */
+  .topo-fixo { position: fixed; inset: 0 0 auto; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 14px max(16px, 4vw); color: #F3EAD9; transition: background .4s; }
+  .topo-fixo b { font: 600 19px "Fraunces"; }
+  .topo-fixo a { color: #F3EAD9; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid rgb(243 234 217 / .4); padding: 8px 16px; border-radius: 99px; }
+  .topo-fixo.rolou { background: rgb(31 58 43 / .92); backdrop-filter: blur(10px); }
+  .cine { position: relative; height: 420vh; background: #14231A; }
+  .cine-palco { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+  .cine-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cine-vinheta { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 45%, transparent 50%, rgb(10 20 14 / .55) 100%), linear-gradient(to bottom, rgb(10 20 14 / .35), transparent 25%, transparent 70%, var(--verde) 100%); }
+  .momento { position: absolute; left: max(16px, 5vw); bottom: 12vh; max-width: 560px; opacity: 0; transform: translateY(24px); filter: blur(6px); transition: opacity .7s, transform .9s, filter .7s; pointer-events: none; }
+  .momento.ativo { opacity: 1; transform: none; filter: none; pointer-events: auto; }
+  .momento--direita { left: auto; right: max(16px, 5vw); }
+  .momento--centro { left: 50%; transform: translate(-50%, 24px); text-align: center; width: min(600px, calc(100% - 32px)); }
+  .momento--centro.ativo { transform: translate(-50%, 0); }
+  .vidro { background: rgb(20 35 26 / .55); border: 1px solid rgb(243 234 217 / .18); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 18px; padding: clamp(22px, 3vw, 36px); color: #F3EAD9; }
+  .vidro .frase { font: 400 clamp(26px, 3.2vw, 42px)/1.2 "Fraunces"; margin: 0; }
+  .vidro .frase em { color: #E59A72; }
+  .vidro .botao { margin-top: 22px; }
+  .cine-dica { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); display: grid; justify-items: center; gap: 8px; color: #F3EAD9; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; opacity: .7; transition: opacity .5s; }
+  .cine-dica span { width: 1px; height: 36px; background: linear-gradient(#F3EAD9, transparent); }
+  .cine.andou .cine-dica { opacity: 0; }
+  @media (max-width: 760px) { .momento, .momento--direita { left: 16px; right: 16px; bottom: 10vh; } .momento--centro { left: 50%; right: auto; } }
+  @media (prefers-reduced-motion: reduce) { .cine { height: 100svh; } .momento:not(:first-of-type), .cine-dica { display: none; } .momento:first-of-type { opacity: 1; transform: none; filter: none; } }
+
+  /* Dor */
+  .dor-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .dor-foto { border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgb(31 58 43 / .25); }
+  .lista-dor { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+  .lista-dor li { padding-left: 34px; position: relative; }
+  .lista-dor li::before { content: "✕"; position: absolute; left: 0; top: 0; color: var(--terra); font-weight: 700; }
+  .virada { margin-top: 28px; font: italic 400 24px/1.35 "Fraunces"; color: var(--verde); border-left: 3px solid var(--terra); padding-left: 18px; }
+  @media (max-width: 860px) { .dor-grade { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* O que vem */
+  .dentro { background: #fff; }
+  .pecas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 40px; }
+  .peca { background: var(--creme); border-radius: 16px; padding: 16px 16px 20px; }
+  .peca img { border-radius: 4px; box-shadow: 0 10px 24px rgb(0 0 0 / .14); margin-bottom: 16px; aspect-ratio: 210/297; object-fit: cover; width: 100%; }
+  .peca h3 { font-size: 18px; margin-bottom: 6px; }
+  .peca p { font-size: 15px; color: var(--suave); margin: 0; }
+  @media (max-width: 980px) { .pecas { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .pecas { gap: 12px; } .peca { padding: 10px 10px 14px; } .peca p { font-size: 14px; } }
+
+  /* 30 dias */
+  .semanas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+  .semana { border: 1.5px solid var(--verde); border-radius: 18px; padding: 24px; background: #fff; }
+  .semana b { font: 600 40px/1 "Fraunces"; color: var(--terra); display: block; margin-bottom: 10px; }
+  .semana p { margin: 0; color: var(--suave); font-size: 15px; }
+  @media (max-width: 860px) { .semanas { grid-template-columns: 1fr 1fr; } }
+
+  /* Para quem */
+  .quem { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
+  .quem div { background: #fff; border-radius: 18px; padding: 28px; }
+  .quem ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+  .quem .nao { background: transparent; border: 1.5px dashed rgb(35 32 27 / .3); }
+  @media (max-width: 760px) { .quem { grid-template-columns: 1fr; } }
+
+  /* Preço */
+  .oferta { background: var(--verde); color: #F3EAD9; text-align: center; }
+  .oferta h2 { color: #F3EAD9; }
+  .cartao-preco { background: #FBF6EE; color: var(--tinta); border-radius: 24px; padding: clamp(28px, 5vw, 48px); max-width: 560px; margin: 36px auto 0; text-align: left; box-shadow: 0 30px 70px rgb(0 0 0 / .35); }
+  .cartao-preco ul { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 10px; }
+  .cartao-preco li { padding-left: 30px; position: relative; }
+  .cartao-preco li::before { content: "♥"; position: absolute; left: 0; color: var(--terra); }
+  .de { text-decoration: line-through; color: var(--suave); }
+  .preco { font: 600 64px/1 "Fraunces"; color: var(--verde); margin: 6px 0 4px; }
+  .preco small { font-size: 22px; }
+  .prazo { display: inline-block; background: var(--terra-claro); color: var(--terra); font-weight: 700; font-size: 14px; padding: 7px 12px; border-radius: 8px; margin-bottom: 22px; }
+  .cartao-preco .botao { width: 100%; }
+  .seguro { font-size: 13px; color: var(--suave); text-align: center; margin: 14px 0 0; }
+
+  /* Perguntas */
+  details { background: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 600; color: var(--verde); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::after { content: "+"; color: var(--terra); font-size: 22px; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 12px 0 0; color: var(--suave); }
+
+  .aviso { font-size: 14px; color: var(--suave); border-top: 1px solid var(--linha); padding: 32px 0 48px; }
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; background: rgb(31 58 43 / .96); padding: 12px 16px; display: none; z-index: 20; }
+  .barra .botao { width: 100%; padding: 16px; }
+  @media (max-width: 760px) { .barra.mostrar { display: block; } body { padding-bottom: 76px; } }
+</style>
+</head>
+<body>
+
+<div class="topo-fixo"><b>Dinheiro sem Briga</b><a href="#oferta">Quero a cartilha</a></div>
+
+<!-- ABERTURA CINEMATOGRÁFICA: o vídeo da mesa anda com a rolagem -->
+<section class="cine" aria-label="Abertura">
+  <div class="cine-palco">
+    <canvas class="cine-canvas" aria-hidden="true"></canvas>
+    <div class="cine-vinheta"></div>
+    <div class="momento" data-de="0" data-ate="0.3">
+      <div class="vidro"><p class="sobre" style="color:#E59A72">Dinheiro sem Briga para Casais</p><p class="frase">A fatura chegou. E com ela, a pergunta: <em>"o que é isso aqui?"</em></p></div>
+    </div>
+    <div class="momento momento--direita" data-de="0.38" data-ate="0.68">
+      <div class="vidro"><p class="frase">E se, em vez de briga, vocês tivessem <em>uma conversa?</em></p></div>
+    </div>
+    <div class="momento momento--centro" data-de="0.76" data-ate="1">
+      <div class="vidro"><p class="frase">7 conversas. Uma cartilha. <em>Imprima hoje.</em></p><a class="botao" href="#oferta">Quero a cartilha <small>· R$ 19,90</small></a></div>
+    </div>
+    <div class="cine-dica" aria-hidden="true"><span></span>role</div>
+  </div>
+</section>
+
+<header class="hero">
+  <div class="larg hero-grade">
+    <div>
+      <p class="sobre" style="color:#E59A72">Cartilha para imprimir em casa</p>
+      <h1>Dinheiro<span>sem Briga</span><small>para Casais</small></h1>
+      <p class="lead">7 conversas para vocês pararem de brigar pela fatura e começarem a decidir juntos. Com cartas para recortar, caderno do casal e cartazes para a geladeira.</p>
+      <a class="botao comprar" href="#oferta">Quero a cartilha <small>· R$ 19,90</small></a>
+      <div class="garantias"><span>✓ PDF para imprimir hoje</span><span>✓ 7 dias de garantia</span><span>✓ Pagamento seguro</span></div>
+    </div>
+    <div class="pilha" aria-hidden="true">
+      <img class="a" src="assets/dsb/pagina-04.webp" alt="">
+      <img class="b" src="assets/dsb/pagina-09.webp" alt="">
+      <img class="c" src="assets/dsb/pagina-01.webp" alt="">
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="larg dor-grade">
+    <div class="dor-foto"><img src="assets/dsb/casal.webp" alt="Casal sorrindo enquanto organiza as contas na mesa da cozinha" loading="lazy"></div>
+    <div>
+      <p class="sobre">Soa familiar?</p>
+      <h2>A briga nunca é pelo número. É pelo que ninguém conversou.</h2>
+      <ul class="lista-dor">
+        <li>A fatura chega e vem a pergunta: "o que é isso aqui?"</li>
+        <li>Um paga mais e sente que ninguém vê.</li>
+        <li>Toda conversa sobre dinheiro vira acusação ou silêncio.</li>
+        <li>Vocês querem coisas diferentes e nunca sentaram para decidir.</li>
+      </ul>
+      <p class="virada">O problema está sobre a mesa. A outra pessoa está ao seu lado.</p>
+    </div>
+  </div>
+</section>
+
+<section class="dentro">
+  <div class="larg">
+    <p class="sobre">O que vem na cartilha</p>
+    <h2>Não é para ler. É para usar na mesa.</h2>
+    <p style="max-width:640px;color:var(--suave)">São 14 páginas A4 para imprimir em casa, com pouco gasto de tinta. Vocês recortam, escrevem à mão e penduram na geladeira.</p>
+    <div class="pecas">
+      <div class="peca"><img src="assets/dsb/pagina-04.webp" alt="Página com as cartas de conversa 1 a 4" loading="lazy"><h3>7 cartas de conversa</h3><p>Uma por semana, com as perguntas e o espaço do acordo.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-05.webp" alt="Página com as cartas 5 a 7 e a carta coringa" loading="lazy"><h3>A carta coringa</h3><p>"Pausa com carinho": quem mostrar, pausa a conversa sem discussão.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-06.webp" alt="Página do diagnóstico inicial" loading="lazy"><h3>Caderno do casal</h3><p>Diagnóstico, mapa financeiro, meu/seu/nosso e plano do mês.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-09.webp" alt="Cartaz Os acordos da nossa casa" loading="lazy"><h3>Cartazes de geladeira</h3><p>Acordos da casa, calendário de vencimentos e frases difíceis.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-03.webp" alt="Página do desafio de 30 dias" loading="lazy"><h3>Desafio 30 dias</h3><p>Quatro semanas para marcar com X e sentir o progresso.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-12.webp" alt="Página de frases para conversas difíceis" loading="lazy"><h3>Frases prontas</h3><p>Para abrir, discordar, pausar e reparar sem atacar.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-13.webp" alt="Página do pacto do casal para assinar" loading="lazy"><h3>O nosso pacto</h3><p>Para assinar no fim e, se quiserem, emoldurar.</p></div>
+      <div class="peca"><img src="assets/dsb/pagina-01.webp" alt="Capa da cartilha" loading="lazy"><h3>Passa para uma amiga</h3><p>Cartões para entregar a quem também precisa dessa conversa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="larg">
+    <p class="sobre">Como funciona</p>
+    <h2>Quatro semanas, sete conversas.</h2>
+    <div class="semanas">
+      <div class="semana"><b>01</b><h3>História e realidade</h3><p>O que cada um aprendeu sobre dinheiro e o retrato do mês, sem culpa.</p></div>
+      <div class="semana"><b>02</b><h3>Divisão e acordos</h3><p>O que é meu, seu e nosso, e os 5 acordos da casa.</p></div>
+      <div class="semana"><b>03</b><h3>Prioridade e plano</h3><p>Um objetivo de 90 dias e o plano do próximo mês.</p></div>
+      <div class="semana"><b>04</b><h3>Reunião e ajuste</h3><p>A reunião de 30 minutos que vira rotina todo mês.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="larg">
+    <p class="sobre">É para vocês?</p>
+    <h2>Feita para casais de verdade.</h2>
+    <div class="quem">
+      <div><h3>É para quem</h3><ul><li>Divide contas, casa ou planos com alguém.</li><li>Quer conversar sobre dinheiro sem virar briga.</li><li>Prefere algo prático, de papel e caneta, a mais um app.</li><li>Quer dar o primeiro passo mesmo que o outro ainda esteja receoso.</li></ul></div>
+      <div class="nao"><h3>Não é para</h3><ul><li>Quem procura indicação de investimento ou crédito.</li><li>Situações de controle, ameaça ou medo de conversar. Nesses casos, a prioridade é a sua segurança e o apoio de um profissional.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="oferta" id="oferta">
+  <div class="larg">
+    <p class="sobre" style="justify-content:center;color:#E59A72">Preço de lançamento</p>
+    <h2>Imprima hoje. Converse esta semana.</h2>
+    <div class="cartao-preco">
+      <ul>
+        <li>Cartilha completa em PDF (14 páginas A4)</li>
+        <li>7 cartas de conversa + a carta coringa</li>
+        <li>Caderno do casal e cartazes de geladeira</li>
+        <li>Calendário de vencimentos para imprimir todo mês</li>
+        <li>Cartões "passa para uma amiga"</li>
+      </ul>
+      <span class="de">De R$ 27</span>
+      <p class="preco"><small>R$</small> 19,90</p>
+      <span class="prazo">Preço de lançamento até 30/11</span>
+      <a class="botao comprar" href="#" data-checkout>Quero a cartilha</a>
+      <p class="seguro">Pagamento seguro pela Kiwify · Pix ou cartão · Você recebe o PDF no e-mail na hora · 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="larg" style="max-width:760px">
+    <p class="sobre">Perguntas</p>
+    <h2>Antes de comprar</h2>
+    <details><summary>Eu recebo algo pelo correio?</summary><p>Não. É um PDF que chega no seu e-mail logo depois da compra. Vocês imprimem em casa ou numa gráfica rápida, em papel A4 comum.</p></details>
+    <details><summary>Gasta muita tinta?</summary><p>Quase todas as páginas têm fundo branco. Só a capa e a carta coringa têm cor forte, e dá para pular a capa se quiser.</p></details>
+    <details><summary>E se o meu parceiro ou parceira não quiser participar?</summary><p>Comece pelo diagnóstico sozinho e faça um convite com dia e hora marcados. A cartilha tem um jeito de começar mesmo quando só um dá o primeiro passo.</p></details>
+    <details><summary>Serve para casais que não moram juntos?</summary><p>Serve para qualquer casal que divide contas, planos ou decisões, morando junto ou não.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só pedir o reembolso pela própria Kiwify.</p></details>
+    <p style="margin-top:28px;text-align:center"><a class="botao comprar" href="#oferta">Quero a cartilha <small>· R$ 19,90</small></a></p>
+  </div>
+</section>
+
+<footer class="larg aviso">
+  <p><b>Dinheiro sem Briga para Casais</b> · por Aracele Silva · 1ª edição, 2026.</p>
+  <p>Material educativo. Não substitui orientação financeira individual, terapia, mediação, contabilidade ou orientação jurídica, e não recomenda produtos financeiros. Fonte citada: Serasa e Opinion Box (2025), pesquisa sobre dinheiro e relacionamentos.</p>
+</footer>
+
+<div class="barra"><a class="botao comprar" href="#oferta">Quero a cartilha · R$ 19,90</a></div>
+
+<script>
+  // Quadros do vídeo da mesa (o app.js do site toca o vídeo com a rolagem)
+  window.SITE = { frames: { total: 159, desktop: "assets/dsb/frames/desktop/f_{n}.webp", mobile: "assets/dsb/frames/mobile/f_{n}.webp" } };
+</script>
+<script src="app.js"></script>
+<script>
+  const topoFixo = document.querySelector(".topo-fixo");
+  addEventListener("scroll", () => topoFixo.classList.toggle("rolou", scrollY > innerHeight * 3.2), { passive: true });
+  // Coloque aqui o link do checkout da Kiwify quando o produto estiver criado
+  const CHECKOUT = "https://pay.kiwify.com.br/3sybR32";
+  document.querySelectorAll("[data-checkout]").forEach((a) => {
+    if (CHECKOUT) { a.href = CHECKOUT; a.target = "_blank"; a.rel = "noopener"; }
+    else a.addEventListener("click", (e) => { e.preventDefault(); a.textContent = "Em breve: link de compra"; });
+  });
+  const barra = document.querySelector(".barra"), oferta = document.querySelector("#oferta");
+  addEventListener("scroll", () => {
+    const r = oferta.getBoundingClientRect();
+    const fimCine = document.querySelector(".cine").offsetHeight;
+    barra.classList.toggle("mostrar", scrollY > fimCine && (r.top > innerHeight || r.bottom < 0));
+  }, { passive: true });
+</script>
+</body>
+</html>
