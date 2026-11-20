@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/filme/desktop/f_0001.webp">
-  <link rel="stylesheet" href="filme.css?v=4">
+  <link rel="stylesheet" href="filme.css?v=6">
 </head>
 <body>
 
@@ -45,16 +45,15 @@
       <!-- O vapor cobre a tela e revela a Aracele na poltrona, com a mesma xícara -->
       <div class="cine-vapor" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="cine-foto" aria-hidden="true">
-        <img class="cine-foto-fundo" src="assets/img/poltrona.webp" alt="">
         <img class="cine-foto-frente" src="assets/img/poltrona.webp" alt="">
       </div>
 
-      <div class="momento momento--abertura" data-de="0" data-ate="0.3">
+      <div class="momento momento--abertura" data-de="0" data-ate="0.26">
         <p class="etiqueta">Saindo quentinho</p>
         <h1 class="titulo-abertura">Eu testo as novidades de IA e te conto <em>o que é grátis, o que tem limite e quanto custa.</em></h1>
         <a href="#cardapio" class="botao">Ver o cardápio</a>
       </div>
-      <div class="momento momento--direita" data-de="0.8" data-ate="1">
+      <div class="momento momento--entrada" data-de="0.6" data-ate="1">
         <p class="destaque">Eu comecei a usar IA para resolver <em>problemas reais</em> na rotina da minha equipe.</p>
       </div>
 
@@ -171,8 +170,16 @@
       <h2 class="palavras">Para o seu negócio, eu cozinho junto.</h2>
       <p class="revelar">Este site é um exemplo: o filme da abertura foi todo gerado com IA.</p>
     </div>
+    <div class="vitrine-clone revelar">
+      <div class="celular"><video class="video-clone" src="assets/video/clone-demo.mp4" poster="assets/video/clone-demo.webp" muted loop playsinline preload="none" aria-label="Exemplo de vídeo feito com o clone da Aracele"></video></div>
+      <div>
+        <span class="n">01</span>
+        <h3>Vídeo com o seu clone</h3>
+        <p>Você manda fotos e um áudio. Eu entrego vídeos com a sua cara e a sua voz, com moldura, letreiro e transições, sem você gravar nada.</p>
+        <span class="selo-clone">Este vídeo é o meu clone. Eu não gravei nada.</span>
+      </div>
+    </div>
     <ol class="servicos">
-      <li class="revelar"><span class="n">01</span><div><h3>Vídeo com o seu clone</h3><p>Você manda fotos e um áudio. Eu entrego vídeos com a sua cara e a sua voz, sem você gravar.</p></div></li>
       <li class="revelar"><span class="n">02</span><div><h3>Site que é um filme</h3><p>Como este: cenas que andam com a rolagem, cadastro de clientes e botão de contato.</p></div></li>
       <li class="revelar"><span class="n">03</span><div><h3>Reels todo mês</h3><p>Roteiro com gancho, edição com legenda e chamada para o direct. Você aprova e eu entrego.</p></div></li>
       <li class="revelar"><span class="n">04</span><div><h3>App sob medida</h3><p>Aquela planilha que dá trabalho vira um aplicativo simples, do jeito da sua rotina.</p></div></li>
@@ -229,8 +236,8 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2Zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6Zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg>
 </a>
 
-<script src="config.js?v=4"></script>
-<script src="app.js?v=4"></script>
-<script src="vivo.js?v=4"></script>
+<script src="config.js?v=5"></script>
+<script src="app.js?v=5"></script>
+<script src="vivo.js?v=5"></script>
 </body>
 </html>

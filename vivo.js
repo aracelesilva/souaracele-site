@@ -80,20 +80,20 @@
       // Vapor sobe e cobre a tela (55%→72%), depois abre revelando a foto na poltrona (72%→86%)
       const suave = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
       const palco = cine.querySelector(".cine-palco");
-      palco.style.setProperty("--vapor", (suave(0.5, 0.7, p) * (1 - suave(0.74, 0.88, p))).toFixed(3));
-      palco.style.setProperty("--foto", suave(0.7, 0.8, p).toFixed(3));
+      palco.style.setProperty("--vapor", (suave(0.28, 0.46, p) * (1 - suave(0.5, 0.64, p))).toFixed(3));
+      palco.style.setProperty("--foto", suave(0.46, 0.58, p).toFixed(3));
     }
     if (prazo) {
       const r = prazo.getBoundingClientRect();
       const q = Math.min(1, Math.max(0, -r.top / (prazo.offsetHeight - innerHeight)));
-      prazo.style.setProperty("--f2", Math.min(1, Math.max(0, (q - 0.08) / 0.12)).toFixed(3));
-      const estado = q < 0.25 ? ["ok", "Vence em 5 dias", 15] : q < 0.42 ? ["atencao", "Vence amanhã", 55] : q < 0.58 ? ["hoje", "Vence hoje!", 85] : ["vencido", "Venceu ontem", 100];
+      prazo.style.setProperty("--f2", Math.min(1, Math.max(0, (q - 0.04) / 0.1)).toFixed(3));
+      const estado = q < 0.22 ? ["ok", "Vence em 5 dias", 15] : q < 0.42 ? ["atencao", "Vence amanhã", 55] : ["hoje", "Vence hoje!", 90];
       if (cardPrazo.dataset.estado !== estado[0]) {
         cardPrazo.dataset.estado = estado[0];
         cardPrazo.querySelector(".card-prazo-status b").textContent = estado[1];
         cardPrazo.style.setProperty("--gasto", estado[2] + "%");
       }
-      const f3 = Math.min(1, Math.max(0, (q - 0.66) / 0.14));
+      const f3 = Math.min(1, Math.max(0, (q - 0.42) / 0.12));
       prazo.style.setProperty("--f3", f3.toFixed(3));
       prazoFinal.classList.toggle("pronto", f3 > 0.5);
     }
@@ -118,4 +118,12 @@
   /* Luz que segue o mouse */
   const luz = document.querySelector(".luz-cursor");
   if (luz && !toque) addEventListener("pointermove", (e) => { luz.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`; }, { passive: true });
+})();
+
+/* Vídeo do clone: toca sozinho (sem som) só quando aparece na tela; com movimento reduzido, mostra os controles */
+(() => {
+  const v = document.querySelector(".video-clone");
+  if (!v) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { v.controls = true; return; }
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.play().catch(() => { v.controls = true; }); } else v.pause(); }, { threshold: 0.4 }).observe(v);
 })();
