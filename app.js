@@ -151,11 +151,12 @@
       try {
         const r = await fetch(S.lista.url, {
           method: "POST",
-          headers: { "Content-Type": "application/json", apikey: S.lista.chavePublica, Authorization: `Bearer ${S.lista.chavePublica}` },
-          body: JSON.stringify({ name: nome, email, consent: true }),
+          // text/plain: o Google Apps Script não aceita a "pergunta prévia" (preflight) dos navegadores
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name: nome, email, consent: true, origem: location.pathname.includes("dinheiro") ? "cartilha" : "site" }),
         });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok) throw new Error(j.error || r.status);
+        if (!r.ok || j.error) throw new Error(j.error || r.status);
         form.reset(); avisar(j.message || "Prontinho! Seu lugar na mesa está guardado ☕", "ok");
       } catch (e) {
         avisar(String(e.message || "").length > 4 ? e.message : "Não deu para guardar agora. Me chama no direct.", "falha");
