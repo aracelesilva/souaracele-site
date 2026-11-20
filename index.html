@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/filme/desktop/f_0001.webp">
-  <link rel="stylesheet" href="filme.css?v=3">
+  <link rel="stylesheet" href="filme.css?v=4">
 </head>
 <body>
 
@@ -42,20 +42,50 @@
       <div class="cine-vinheta"></div>
       <div class="cine-barra" aria-hidden="true"><span></span></div>
 
-      <div class="momento" data-de="0" data-ate="0.27">
+      <!-- O vapor cobre a tela e revela a Aracele na poltrona, com a mesma xícara -->
+      <div class="cine-vapor" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="cine-foto" aria-hidden="true">
+        <img class="cine-foto-fundo" src="assets/img/poltrona.webp" alt="">
+        <img class="cine-foto-frente" src="assets/img/poltrona.webp" alt="">
+      </div>
+
+      <div class="momento momento--abertura" data-de="0" data-ate="0.3">
         <p class="etiqueta">Saindo quentinho</p>
-        <h1 class="titulo-abertura">IA sem complicação,<br>com <em>informação de verdade.</em></h1>
-      </div>
-      <div class="momento momento--direita" data-de="0.36" data-ate="0.62">
-        <p class="destaque">Eu testo as novidades de IA <em>antes de você gastar tempo.</em></p>
-        <p class="apoio">E te conto o que é grátis, o que tem limite e quanto custa.</p>
-      </div>
-      <div class="momento momento--centro" data-de="0.72" data-ate="1">
-        <p class="destaque">Mergulha comigo. <em>Tudo aqui foi feito com IA.</em></p>
+        <h1 class="titulo-abertura">Eu testo as novidades de IA e te conto <em>o que é grátis, o que tem limite e quanto custa.</em></h1>
         <a href="#cardapio" class="botao">Ver o cardápio</a>
+      </div>
+      <div class="momento momento--direita" data-de="0.8" data-ate="1">
+        <p class="destaque">Eu comecei a usar IA para resolver <em>problemas reais</em> na rotina da minha equipe.</p>
       </div>
 
       <div class="cine-dica" aria-hidden="true"><span></span>role devagar</div>
+    </div>
+  </section>
+
+  <!-- Com movimento reduzido, a foto e a frase aparecem paradas aqui -->
+  <section class="virada-estatica" aria-label="Como tudo começou">
+    <img src="assets/img/poltrona.webp" alt="Aracele sentada na poltrona, com a mão no queixo, ao lado da xícara IA">
+    <p class="destaque">Eu comecei a usar IA para resolver <em>problemas reais</em> na rotina da minha equipe.</p>
+  </section>
+
+  <!-- O PRAZO QUE ESCAPAVA → ArrastAí -->
+  <section id="prazo" class="prazo" aria-label="Por que eu criei o ArrastAí">
+    <div class="prazo-palco">
+      <div class="prazo-texto">
+        <p class="prazo-frase prazo-frase--1">Um prazo <em>sempre</em> escapava.</p>
+        <p class="prazo-frase prazo-frase--2">Estava no e-mail, na planilha, no WhatsApp…</p>
+      </div>
+      <div class="card-prazo" data-estado="ok" aria-live="polite">
+        <span class="card-prazo-tag">Contrato do cliente</span>
+        <strong class="card-prazo-titulo">Enviar proposta revisada</strong>
+        <span class="card-prazo-status"><i></i><b>Vence em 5 dias</b></span>
+        <span class="card-prazo-barra"><span></span></span>
+      </div>
+      <div class="prazo-final">
+        <p class="destaque">Foi por isso que eu criei o <em>ArrastAí</em>.</p>
+        <p class="apoio">Cada prazo vira um card que muda de cor quando está perto de vencer, e te avisa de manhã.</p>
+        <a class="botao" href="https://www.arrastai.com.br" target="_blank" rel="noopener">Conhecer o ArrastAí · 15 dias grátis</a>
+      </div>
     </div>
   </section>
 
@@ -95,12 +125,12 @@
         <p>Seus prazos num quadro só. Cada card muda de cor quando vence e te avisa com som de manhã.</p>
         <span class="carta-preco">15 dias grátis, sem cartão →</span>
       </a>
-      <a class="carta revelar" href="dinheiro-sem-briga.html">
+      <a class="carta carta--destaque carta--gratis revelar" href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">
         <span class="carta-brilho"></span>
-        <span class="carta-tag">Na estante</span>
-        <h3>Dinheiro sem Briga para Casais</h3>
-        <p>A cartilha para imprimir com 7 conversas, cartas para recortar e o pacto do casal.</p>
-        <span class="carta-preco">Conhecer a cartilha →</span>
+        <span class="carta-tag">Grátis · cortesia da casa</span>
+        <h3>Cardápio do Quentinho</h3>
+        <p>Todo vídeo meu vira um prato com links e comandos prontos. Comenta QUENTINHO que eu mando.</p>
+        <span class="carta-preco">Grátis →</span>
       </a>
       <a class="carta revelar" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">
         <span class="carta-brilho"></span>
@@ -116,19 +146,19 @@
         <p>A Lia atende o WhatsApp do salão e marca o horário sozinha, até de madrugada.</p>
         <span class="carta-preco">Quero ser salão fundador →</span>
       </a>
-      <a class="carta revelar" href="https://cardapio.souaracele.com.br/" target="_blank" rel="noopener">
-        <span class="carta-brilho"></span>
-        <span class="carta-tag">Cortesia da casa</span>
-        <h3>Cardápio do Quentinho</h3>
-        <p>Todo vídeo meu vira um prato com links e comandos prontos. Comenta QUENTINHO que eu mando.</p>
-        <span class="carta-preco">Grátis →</span>
-      </a>
       <a class="carta revelar" href="https://higgsfield.ai?fpr=aracele-4cd60f" target="_blank" rel="sponsored noopener">
         <span class="carta-brilho"></span>
         <span class="carta-tag">Na minha bancada</span>
         <h3>Higgsfield</h3>
         <p>A ferramenta paga que eu uso para vídeos e imagens com IA. Dá para testar 3 dias grátis antes de assinar. Pelo meu link de indicação você não paga nada a mais.</p>
         <span class="carta-preco">Testar 3 dias grátis →</span>
+      </a>
+      <a class="carta revelar" href="dinheiro-sem-briga.html">
+        <span class="carta-brilho"></span>
+        <span class="carta-tag">Na estante</span>
+        <h3>Dinheiro sem Briga para Casais</h3>
+        <p>A cartilha para imprimir com 7 conversas, cartas para recortar e o pacto do casal.</p>
+        <span class="carta-preco">Conhecer a cartilha →</span>
       </a>
     </div>
   </section>
@@ -199,8 +229,8 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2Zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6Zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg>
 </a>
 
-<script src="config.js?v=3"></script>
-<script src="app.js?v=3"></script>
-<script src="vivo.js?v=3"></script>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
+<script src="vivo.js?v=4"></script>
 </body>
 </html>

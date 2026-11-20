@@ -11,8 +11,8 @@ window.SITE = {
   },
 
   frames: {
-    total: 240,
-    desktop: "assets/filme/desktop/f_{n}.webp",
-    mobile: "assets/filme/mobile/f_{n}.webp",
+    total: 125,
+    desktop: "assets/filme2/desktop/f_{n}.webp",
+    mobile: "assets/filme2/mobile/f_{n}.webp",
   },
 };

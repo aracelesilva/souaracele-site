@@ -66,6 +66,9 @@
   }
 
   /* Rolagem: barra do filme, foto do sobre, eco gigante, trilha da história */
+  const prazo = document.querySelector(".prazo");
+  const cardPrazo = prazo && prazo.querySelector(".card-prazo");
+  const prazoFinal = prazo && prazo.querySelector(".prazo-final");
   const fotoSobre = document.querySelector(".sobre-foto img");
   const eco = document.querySelector(".eco");
   const hist = document.querySelector(".bloco--historia");
@@ -74,6 +77,25 @@
     if (cine && barra) {
       const p = Math.min(1, Math.max(0, -cine.getBoundingClientRect().top / (cine.offsetHeight - innerHeight)));
       barra.style.setProperty("--p", p);
+      // Vapor sobe e cobre a tela (55%→72%), depois abre revelando a foto na poltrona (72%→86%)
+      const suave = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+      const palco = cine.querySelector(".cine-palco");
+      palco.style.setProperty("--vapor", (suave(0.5, 0.7, p) * (1 - suave(0.74, 0.88, p))).toFixed(3));
+      palco.style.setProperty("--foto", suave(0.7, 0.8, p).toFixed(3));
+    }
+    if (prazo) {
+      const r = prazo.getBoundingClientRect();
+      const q = Math.min(1, Math.max(0, -r.top / (prazo.offsetHeight - innerHeight)));
+      prazo.style.setProperty("--f2", Math.min(1, Math.max(0, (q - 0.08) / 0.12)).toFixed(3));
+      const estado = q < 0.25 ? ["ok", "Vence em 5 dias", 15] : q < 0.42 ? ["atencao", "Vence amanhã", 55] : q < 0.58 ? ["hoje", "Vence hoje!", 85] : ["vencido", "Venceu ontem", 100];
+      if (cardPrazo.dataset.estado !== estado[0]) {
+        cardPrazo.dataset.estado = estado[0];
+        cardPrazo.querySelector(".card-prazo-status b").textContent = estado[1];
+        cardPrazo.style.setProperty("--gasto", estado[2] + "%");
+      }
+      const f3 = Math.min(1, Math.max(0, (q - 0.66) / 0.14));
+      prazo.style.setProperty("--f3", f3.toFixed(3));
+      prazoFinal.classList.toggle("pronto", f3 > 0.5);
     }
     if (fotoSobre) {
       const r = fotoSobre.parentElement.getBoundingClientRect();

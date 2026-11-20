@@ -184,3 +184,71 @@ blockquote { margin: 18px 0 0; font: italic 400 clamp(22px, 2vw, 30px)/1.3 var(-
 }
 .sobre-foto img { object-position: center 30%; }
 .historia-foto img { object-position: center 35%; }
+
+/* ══ Abertura com história (branch abertura-com-historia) ═════════════════ */
+.cine { height: 520vh; }
+/* Primeira tela: promessa + botão já visíveis e clicáveis */
+.momento--abertura { max-width: min(760px, calc(100% - 2 * var(--gutter))); }
+.momento--abertura .titulo-abertura { font-size: clamp(30px, min(4.6vw, 7.5vh), 68px); margin-bottom: .6em; }
+/* Vapor que cobre a tela (controlado pelo vivo.js com --vapor de 0 a 1) */
+.cine-vapor { position: absolute; inset: 0; pointer-events: none; opacity: var(--vapor, 0); }
+.cine-vapor i { position: absolute; width: 90vmax; height: 90vmax; border-radius: 50%; filter: blur(40px);
+  background: radial-gradient(circle, rgb(243 234 217 / .95), rgb(243 234 217 / .55) 40%, transparent 70%);
+  transform: translate(-50%, -50%) scale(calc(.4 + var(--vapor, 0) * .9)); }
+.cine-vapor i:nth-child(1) { left: 50%; top: 70%; }
+.cine-vapor i:nth-child(2) { left: 20%; top: 40%; }
+.cine-vapor i:nth-child(3) { left: 80%; top: 35%; }
+.cine-vapor i:nth-child(4) { left: 35%; top: 10%; }
+.cine-vapor i:nth-child(5) { left: 70%; top: 85%; }
+/* A foto na poltrona aparece por trás do vapor (--foto de 0 a 1) */
+.cine-foto { position: absolute; inset: 0; opacity: var(--foto, 0); pointer-events: none; }
+.cine-foto img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cine-foto-fundo { object-fit: cover; filter: blur(30px) brightness(.45); transform: scale(1.15); }
+.cine-foto-frente { object-fit: contain; object-position: center bottom; transform: scale(calc(1.06 - var(--foto, 0) * .06)); }
+@media (max-width: 760px) { .cine-foto-frente { object-fit: cover; object-position: center 20%; } }
+.cine-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 40%, rgb(0 0 0 / .65)), linear-gradient(to top, rgb(0 0 0 / .6), transparent 40%); }
+@media (max-width: 760px) { .cine-foto::after { background: linear-gradient(to top, rgb(0 0 0 / .85), transparent 55%); } }
+
+/* Versão parada (só com movimento reduzido) */
+.virada-estatica { display: none; }
+
+/* O prazo que escapava */
+.prazo { position: relative; height: 300vh; background: var(--noite-2); }
+.prazo-palco { position: sticky; top: 0; height: 100vh; height: 100svh; display: grid; place-content: center; justify-items: center; gap: 28px; padding: 90px var(--gutter) 40px; text-align: center; overflow: hidden; }
+.prazo-texto { min-height: 3.4em; }
+.prazo-frase { margin: 0; transition: opacity .6s var(--ease), transform .8s var(--ease); }
+.prazo-frase--1 { font: 300 clamp(32px, 5vw, 70px)/1.1 var(--fonte-titulo); color: var(--creme); }
+.prazo-frase--2 { font-size: clamp(16px, 1.4vw, 21px); margin-top: 12px; opacity: var(--f2, 0); transform: translateY(calc((1 - var(--f2, 0)) * 16px)); }
+.card-prazo { --cor: #4CAF7A; width: min(380px, 100%); text-align: left; display: grid; gap: 10px; padding: 22px 22px 18px; border-radius: 18px;
+  background: #FBF6EE; color: #1A120A; border-left: 8px solid var(--cor); box-shadow: 0 30px 80px rgb(0 0 0 / .55), 0 0 0 1px rgb(255 255 255 / .06);
+  transition: border-color .5s, transform .5s var(--ease), box-shadow .5s; }
+.card-prazo-tag { font: 700 11px/1 var(--fonte-texto); letter-spacing: .16em; text-transform: uppercase; color: #8A7A66; }
+.card-prazo-titulo { font: 500 clamp(19px, 1.6vw, 23px)/1.25 var(--fonte-titulo); }
+.card-prazo-status { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--cor); transition: color .5s; }
+.card-prazo-status i { width: 10px; height: 10px; border-radius: 50%; background: var(--cor); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cor) 25%, transparent); }
+.card-prazo-barra { height: 6px; border-radius: 6px; background: #EDE3D3; overflow: hidden; }
+.card-prazo-barra span { display: block; height: 100%; width: var(--gasto, 10%); background: var(--cor); transition: width .5s, background .5s; }
+.card-prazo[data-estado="atencao"] { --cor: #E0A100; }
+.card-prazo[data-estado="hoje"] { --cor: #E8742A; transform: rotate(-1.5deg); }
+.card-prazo[data-estado="vencido"] { --cor: #D64545; transform: rotate(1.5deg); box-shadow: 0 30px 80px rgb(0 0 0 / .55), 0 0 60px rgb(214 69 69 / .35); animation: tremer .5s ease 2; }
+@keyframes tremer { 25% { translate: -4px 0; } 75% { translate: 4px 0; } }
+.prazo-final { max-width: 640px; opacity: var(--f3, 0); transform: translateY(calc((1 - var(--f3, 0)) * 24px)); pointer-events: none; }
+.prazo-final.pronto { pointer-events: auto; }
+.prazo-final .destaque { color: var(--creme); }
+
+/* Cardápio: o grátis em destaque também */
+.carta--gratis { border-color: var(--ouro-forte); }
+
+/* Movimento reduzido: tudo legível e clicável, sem depender de rolagem */
+@media (prefers-reduced-motion: reduce) {
+  .cine { height: auto; }
+  .cine-palco { position: relative; height: 100svh; }
+  .cine-vapor, .cine-foto { display: none; }
+  .momento--abertura { display: block !important; opacity: 1 !important; transform: none !important; filter: none !important; pointer-events: auto !important; }
+  .virada-estatica { display: grid; gap: 24px; justify-items: center; padding: 64px var(--gutter); text-align: center; background: var(--noite); }
+  .virada-estatica img { width: min(420px, 100%); border-radius: 24px; }
+  .prazo { height: auto; }
+  .prazo-palco { position: relative; height: auto; padding: 72px var(--gutter); }
+  .prazo-frase--2, .prazo-final { opacity: 1; transform: none; pointer-events: auto; }
+  .card-prazo { --cor: #E8742A; }
+}
