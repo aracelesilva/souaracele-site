@@ -84,11 +84,12 @@
   .surge.visto { opacity:1; transform:none; }
 
   .demo { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(30px,5vw,70px); align-items:center; }
-  .comparar { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .comparar { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .comparar figure { margin:0; }
   .comparar .celular { width:100%; max-width:300px; }
   .comparar figcaption { text-align:center; margin-top:14px; }
-  .comparar figcaption b { display:block; font-size:17px; }
+  .comparar figcaption b { display:block; font-size:16px; line-height:1.2; color:#fff; }
+  .comparar figcaption em { display:block; font-style:normal; color:#E9E1D2; font-size:14px; margin-top:4px; }
   .comparar figcaption span { display:inline-block; margin-top:6px; padding:5px 12px; border-radius:999px; background:#FFBF0014; border:1px solid var(--linha); color:var(--ambar); font-size:13px; font-weight:700; }
   .celular { position:relative; width:min(340px,80vw); margin:0 auto; aspect-ratio:9/16; border-radius:42px; padding:12px; background:#1b1814; box-shadow:0 0 0 2px #FFBF0044, 0 40px 120px #FFBF0022, 0 30px 80px #000; }
   .celular video { width:100%; height:100%; object-fit:cover; border-radius:32px; display:block; background:#000; }
@@ -166,7 +167,7 @@
 
   @media (max-width: 860px) {
     .demo, .passos, .planos, .precisa { grid-template-columns:1fr; }
-    .comparar { gap:12px; } .comparar .celular { border-radius:28px; padding:8px; } .comparar .celular video { border-radius:22px; } .som { right:12px; bottom:12px; padding:8px 12px; font-size:13px; }
+    .comparar { grid-template-columns:repeat(3,72%); overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; gap:12px; } .comparar figure { scroll-snap-align:center; } .comparar .celular { border-radius:28px; padding:8px; } .comparar .celular video { border-radius:22px; } .som { right:12px; bottom:12px; padding:8px 12px; font-size:13px; }
     .plano.destaque { transform:none; }
     .passo { min-height:360px; }
     .cine { height:640vh; }
@@ -237,7 +238,7 @@
   <div class="surge">
     <span class="chapeu">Feito pelo Estúdio</span>
     <h2 class="titulo">Este Reel não teve <em>câmera</em> nem edição</h2>
-    <p class="lead">Narração com a voz da IA, cenas ilustradas, frase grande entrando palavra por palavra e chamada final. É assim que o Estúdio entrega cada Reel, nas cores e com a mascote da sua marca. Compare o mesmo Reel nas duas versões: você escolhe, a cada vídeo, se as cenas ganham vida.</p>
+    <p class="lead">Narração com a voz da IA, cenas ilustradas, frase grande entrando palavra por palavra e chamada final. É assim que o Estúdio entrega cada Reel, nas cores e com a mascote da sua marca. Veja um exemplo de cada pacote: no Animado, você escolhe a cada vídeo se as cenas ganham vida; no Edição, o vídeo é o que você gravou.</p>
     <div class="pecas">
       <span>Mascote da sua marca</span><span>Cena por frase</span><span>Frase no topo</span><span>Balões e neon</span><span>Lista que acende</span><span>Legenda pronta</span>
     </div>
@@ -248,14 +249,20 @@
         <video src="assets/fabrica/reel-demo-parado.mp4" poster="assets/fabrica/reel-demo-parado.webp" muted loop playsinline preload="none"></video>
         <button class="som" type="button">🔊 Ouvir</button>
       </div>
-      <figcaption><b>Cenas com câmera andando</b><span>Sem créditos de movimento</span></figcaption>
+      <figcaption><b>Estúdio de Reels Animado</b><em>Câmera andando</em><span>Sem créditos de movimento</span></figcaption>
     </figure>
     <figure>
       <div class="celular">
         <video src="assets/fabrica/reel-demo.mp4?v=2" poster="assets/fabrica/reel-demo.webp?v=2" muted loop playsinline preload="none"></video>
         <button class="som" type="button">🔊 Ouvir</button>
       </div>
-      <figcaption><b>Cenas com vida</b><span>Usa créditos de movimento no Google Flow</span></figcaption>
+      <figcaption><b>Estúdio de Reels Animado</b><em>Cenas com vida</em><span>Usa créditos de movimento no Google Flow</span></figcaption>
+    </figure>
+    <figure>
+      <div class="celular">
+        <video src="assets/video/clone-demo.mp4" poster="assets/video/clone-demo.webp" muted loop playsinline preload="none"></video>
+      </div>
+      <figcaption><b>Estúdio de Reels Edição</b><em>Seu vídeo gravado</em><span>Cortes, legenda e letreiro</span></figcaption>
     </figure>
   </div>
 </section>
@@ -480,9 +487,9 @@ document.querySelectorAll("[data-checkout]").forEach((a) => { const u = CHECKOUT
   vids.forEach((v) => {
     new IntersectionObserver(([e]) => { if (e.isIntersecting && !reduzir) v.play().catch(() => {}); else v.pause(); }, { threshold: .4 }).observe(v);
     const som = v.parentElement.querySelector(".som");
-    som.addEventListener("click", () => {
+    if (som) som.addEventListener("click", () => {
       const ligar = v.muted;
-      vids.forEach((o) => { o.muted = true; o.parentElement.querySelector(".som").textContent = "🔊 Ouvir"; });  // só um com som por vez
+      vids.forEach((o) => { o.muted = true; const b = o.parentElement.querySelector(".som"); if (b) b.textContent = "🔊 Ouvir"; });  // só um com som por vez
       if (ligar) { v.muted = false; v.currentTime = 0; v.play(); som.textContent = "🔇 Sem som"; }
     });
   });
