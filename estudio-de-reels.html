@@ -41,7 +41,7 @@
   .faiscas { position:absolute; inset:0; pointer-events:none; }
   .barra { position:absolute; left:0; bottom:0; height:6px; width:100%; background:var(--ambar); transform-origin:left; transform:scaleX(var(--p,0)); }
   .cena { position:absolute; inset:0; pointer-events:none; }
-  .cena .frase { position:absolute; left:var(--gutter); right:var(--gutter); top:clamp(84px,12vh,130px); text-align:center; font-size:clamp(34px,4.6vw,63px); text-shadow:0 6px 0 #0A0A0A, 0 0 40px #0A0A0A; }
+  .cena .frase { position:absolute; left:var(--gutter); right:var(--gutter); top:clamp(84px,12vh,130px); text-align:center; font-size:clamp(34px, min(8.8vh, 6vw), 88px); text-shadow:0 6px 0 #0A0A0A, 0 0 40px #0A0A0A; }
   .cena .frase span { display:inline-block; opacity:0; transform:translateY(40px) scale(1.25); transition:opacity .25s, transform .35s cubic-bezier(.3,1.8,.5,1); transition-delay:calc(var(--i) * 90ms); margin:0 .1em; }
   .cena.ativa .frase span { opacity:1; transform:none; }
   .cena .peca { position:absolute; opacity:0; transform:scale(.3) rotate(-8deg); transition:opacity .3s .35s, transform .5s .35s cubic-bezier(.3,1.7,.5,1); }
@@ -170,6 +170,7 @@
   footer { text-align:center; padding:40px var(--gutter) 60px; color:var(--mudo); font-size:14px; border-top:1px solid #ffffff12; }
   footer a { color:var(--ambar); }
 
+  @media (max-width: 760px) { .cena .frase { font-size:max(30px, min(10vw, 4.7vh)); } }
   @media (max-width: 860px) {
     .demo, .passos, .planos, .precisa { grid-template-columns:1fr; }
     .comparar { grid-template-columns:repeat(3,72%); overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; gap:12px; } .comparar figure { scroll-snap-align:center; } .comparar .celular { border-radius:28px; padding:8px; } .comparar .celular video { border-radius:22px; } .som { right:12px; bottom:12px; padding:8px 12px; font-size:13px; }
