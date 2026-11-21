@@ -115,13 +115,23 @@
   .plano .botao { margin-top:auto; justify-content:center; }
   .plano.breve { opacity:.85; }
   .nota { margin-top:20px; color:var(--mudo); font-size:14px; }
-  .antes { display:grid; grid-template-columns:1fr 1fr 1fr 1.8fr; gap:14px; margin-top:28px; }
+  .antes { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
   .antes div { padding:18px 20px; border-radius:20px; background:#FFBF000D; border:1px solid var(--linha); }
   .antes b { display:block; color:var(--ambar); margin-bottom:4px; }
   .antes p b { display:inline; color:var(--texto); }
   .antes p { color:var(--mudo); font-size:14.5px; }
-  @media (max-width: 1100px) { .antes { grid-template-columns:repeat(2,1fr); } }
-  @media (max-width: 860px) { .antes { grid-template-columns:1fr; } }
+  .o-que { margin-top:6px; color:#E9E1D2; max-width:780px; }
+  .preco--breve { font-size:34px !important; color:var(--ambar); }
+  .creditos { margin-top:22px; padding:28px; border-radius:26px; background:var(--cartao); border:1px solid var(--linha); }
+  .creditos h3 { font-family:'Archivo Black',Inter; text-transform:uppercase; font-size:clamp(20px,2vw,26px); }
+  .creditos-lead { color:var(--mudo); margin:6px 0 18px; }
+  .creditos-grade { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .creditos-grade div { padding:18px 20px; border-radius:20px; background:#FFBF000D; border:1px solid var(--linha); }
+  .creditos-grade b { display:block; color:var(--ambar); margin-bottom:6px; font-size:17px; }
+  .creditos-grade p { color:var(--mudo); font-size:14.5px; }
+  .creditos-grade strong { color:var(--texto); }
+  @media (max-width: 1100px) { .creditos-grade { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width: 860px) { .antes, .creditos-grade { grid-template-columns:1fr; } }
 
   .precisa { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:34px; }
   .precisa div { padding:22px 24px; border-radius:22px; background:var(--cartao); border:1px solid var(--linha); }
@@ -240,13 +250,14 @@
   <div class="surge">
     <span class="chapeu">Estúdio de Reels no Automático</span>
     <h2 class="titulo">Do Reel animado ao <em>seu vídeo editado</em></h2>
+    <p class="lead o-que">Você recebe o arquivo do Estúdio e um guia de instalação para criar seus Reels no app do Claude, no computador. A compra do Estúdio é única. O uso requer uma assinatura paga do Claude.</p>
   </div>
   <div class="planos">
     <article class="plano surge">
       <small>Básico</small>
       <h3>Estúdio de Reels Animado</h3>
       <div class="preco"><sup>R$</sup>67</div>
-      <p class="frase">Responda 5 perguntas e receba um Reel animado, com voz de IA ou com o áudio que você gravar. Sem ideia do que postar? Receba 3 sugestões de temas para o seu nicho.</p>
+      <p class="frase">Configure sua marca com 5 perguntas, uma vez só. Depois, escolha o tema de cada Reel, aprove o roteiro e receba o vídeo pronto, com voz de IA ou com o áudio que você gravar.</p>
       <ul>
         <li>Reel animado com mascote e cenas da sua marca</li>
         <li>Narração com voz de IA ou com o áudio que você gravar</li>
@@ -273,7 +284,7 @@
     <article class="plano breve surge">
       <small>Avançado · Em breve</small>
       <h3>Estúdio de Reels com Seu Clone</h3>
-      <div class="preco"><sup>R$</sup>147</div>
+      <div class="preco preco--breve">Em breve</div>
       <p class="frase">Receba Reels com seu clone digital, com sua imagem e sua voz, sem precisar gravar cada vídeo.</p>
       <ul><li>Tudo do Edição</li><li>Seu clone de IA falando por você</li><li>Quem comprar antes sobe pagando só a diferença</li></ul>
       <a class="botao botao--vazado" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Entrar na lista de espera</a>
@@ -283,7 +294,16 @@
     <div><b>Compra única</b><p>Você paga uma vez, não é assinatura. Pagamento seguro pela Kiwify, com 7 dias de garantia.</p></div>
     <div><b>O que chega por e-mail</b><p>Na hora, o acesso à área de membros da Kiwify, com o arquivo do Estúdio e o guia de instalação em PDF, passo a passo.</p></div>
     <div><b>Onde roda</b><p>No app do Claude no computador (Windows ou Mac). Requer assinatura paga do Claude.</p></div>
-    <div><b>Créditos à parte, conforme o formato</b><p><b>Animado:</b> voz e imagens pelo ElevenLabs (grátis para testar; para postar com fins comerciais, plano pago) ou o seu próprio áudio, grátis. Cenas com movimento são opcionais, com os créditos do seu plano do Google Flow. <b>Edição:</b> editar o seu vídeo não gasta créditos de IA; para postar e ler os números, Instagram profissional ligado pelo Composio.</p></div>
+  </div>
+  <div class="creditos surge">
+    <h3>Ferramentas e créditos, à parte</h3>
+    <p class="creditos-lead">O Estúdio usa as ferramentas que você assina. Antes de gerar qualquer coisa, ele mostra o custo e espera o seu ok.</p>
+    <div class="creditos-grade">
+      <div><b>🎙️ Narração</b><p>Com voz de IA, a narração usa créditos do ElevenLabs (cerca de 300 por Reel de 25 segundos; a conta grátis serve para testar, e para postar com fins comerciais o ElevenLabs pede plano pago). <strong>Se você gravar o próprio áudio, não gasta créditos para gerar a voz.</strong></p></div>
+      <div><b>🖼️ Imagens</b><p>As cenas ilustradas com a mascote da sua marca usam créditos de geração de imagem: no ElevenLabs, cerca de 200 por imagem (5 a 8 por Reel), ou no Google Flow, com os créditos do seu plano Google. A mascote é criada uma vez só.</p></div>
+      <div><b>🎬 Movimento</b><p>Opcional. Para as cenas ganharem vida (a mascote piscando, o vapor subindo), cada imagem vira um clipe no Google Flow, com cerca de 6 créditos do seu plano por clipe de 4 segundos. Sem isso, as cenas ficam paradas e a câmera anda, sem créditos.</p></div>
+      <div><b>✂️ Edição do seu vídeo</b><p>No Estúdio de Reels Edição, cortar, legendar e animar o vídeo que você gravou não gasta créditos de IA. Para postar e ler os números pelo Claude, é preciso Instagram profissional ligado pelo Composio.</p></div>
+    </div>
   </div>
 </section>
 
