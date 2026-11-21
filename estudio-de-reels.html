@@ -115,6 +115,13 @@
   .plano .botao { margin-top:auto; justify-content:center; }
   .plano.breve { opacity:.85; }
   .nota { margin-top:20px; color:var(--mudo); font-size:14px; }
+  .antes { display:grid; grid-template-columns:1fr 1fr 1fr 1.8fr; gap:14px; margin-top:28px; }
+  .antes div { padding:18px 20px; border-radius:20px; background:#FFBF000D; border:1px solid var(--linha); }
+  .antes b { display:block; color:var(--ambar); margin-bottom:4px; }
+  .antes p b { display:inline; color:var(--texto); }
+  .antes p { color:var(--mudo); font-size:14.5px; }
+  @media (max-width: 1100px) { .antes { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width: 860px) { .antes { grid-template-columns:1fr; } }
 
   .precisa { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:34px; }
   .precisa div { padding:22px 24px; border-radius:22px; background:var(--cartao); border:1px solid var(--linha); }
@@ -150,7 +157,7 @@
 
 <header class="topo" id="topo">
   <a class="marca" href="index.html"><img src="assets/img/sobre.webp" alt=""><span>sou<b>aracele</b></span></a>
-  <a class="botao" href="#oferta">Quero o Estúdio</a>
+  <a class="botao" href="#oferta">Ver pacotes</a>
 </header>
 
 <section class="cine" id="filme" aria-label="Como o Estúdio de Reels funciona">
@@ -162,6 +169,10 @@
     <div class="cena" data-de="0" data-ate="0.14">
       <h1 class="frase titulo">Você adia o Reels porque <em>não quer aparecer?</em></h1>
       <div class="peca balao treme" style="--r:5deg;left:62%;top:52%">Amanhã eu gravo…</div>
+      <div class="chamada-cine">
+        <p>Crie Reels animados sem aparecer ou envie seu vídeo para edição.</p>
+        <a class="botao" href="#oferta">Ver pacotes →</a>
+      </div>
     </div>
     <div class="cena" data-de="0.15" data-ate="0.28">
       <p class="frase titulo">Seu Reel sai <em>sem câmera</em> e sem editar</p>
@@ -188,7 +199,7 @@
       <p class="frase titulo">Seu <em>Estúdio de Reels</em> no automático</p>
       <div class="chamada-cine">
         <p>Você só diz o tema e aprova. O resto sai do Estúdio.</p>
-        <a class="botao" href="#oferta">Quero o meu Estúdio →</a>
+        <a class="botao" href="#oferta">Ver pacotes →</a>
       </div>
     </div>
 
@@ -235,7 +246,7 @@
       <small>Básico</small>
       <h3>Estúdio de Reels Animado</h3>
       <div class="preco"><sup>R$</sup>67</div>
-      <p class="frase">Responda 5 perguntas e receba seu Reel pronto, com textos, imagens e animações. Sem ideia do que postar? Receba 3 sugestões de temas para o seu nicho.</p>
+      <p class="frase">Responda 5 perguntas e receba um Reel animado, com voz de IA ou com o áudio que você gravar. Sem ideia do que postar? Receba 3 sugestões de temas para o seu nicho.</p>
       <ul>
         <li>Reel animado com mascote e cenas da sua marca</li>
         <li>Narração com voz de IA ou com o áudio que você gravar</li>
@@ -245,11 +256,11 @@
       <a class="botao" data-checkout="automatico" href="#oferta">Quero o Animado</a>
     </article>
     <article class="plano destaque surge">
-      <span class="selo">Mais completo</span>
+      <span class="selo">Edição de vídeo bruto</span>
       <small>Intermediário</small>
       <h3>Estúdio de Reels Edição</h3>
       <div class="preco"><sup>R$</sup>97</div>
-      <p class="frase">Envie seu vídeo bruto e receba um Reel editado com animações criadas para a sua gravação.</p>
+      <p class="frase">Envie seu vídeo bruto e receba o Reel com cortes, legendas e animações criadas para a sua gravação.</p>
       <ul>
         <li>Tudo do Animado</li>
         <li>Corta erros e silêncios, legenda e anima o seu vídeo</li>
@@ -260,7 +271,7 @@
       <a class="botao" data-checkout="studio" href="#oferta">Quero o Edição</a>
     </article>
     <article class="plano breve surge">
-      <small>Em breve</small>
+      <small>Avançado · Em breve</small>
       <h3>Estúdio de Reels com Seu Clone</h3>
       <div class="preco"><sup>R$</sup>147</div>
       <p class="frase">Receba Reels com seu clone digital, com sua imagem e sua voz, sem precisar gravar cada vídeo.</p>
@@ -268,7 +279,12 @@
       <a class="botao botao--vazado" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Entrar na lista de espera</a>
     </article>
   </div>
-  <p class="nota">Pagamento seguro pela Kiwify. Você recebe o acesso na hora, por e-mail, com o guia de instalação passo a passo.</p>
+  <div class="antes surge">
+    <div><b>Compra única</b><p>Você paga uma vez, não é assinatura. Pagamento seguro pela Kiwify, com 7 dias de garantia.</p></div>
+    <div><b>O que chega por e-mail</b><p>Na hora, o acesso à área de membros da Kiwify, com o arquivo do Estúdio e o guia de instalação em PDF, passo a passo.</p></div>
+    <div><b>Onde roda</b><p>No app do Claude no computador (Windows ou Mac). Requer assinatura paga do Claude.</p></div>
+    <div><b>Créditos à parte, conforme o formato</b><p><b>Animado:</b> voz e imagens pelo ElevenLabs (grátis para testar; para postar com fins comerciais, plano pago) ou o seu próprio áudio, grátis. Cenas com movimento são opcionais, com os créditos do seu plano do Google Flow. <b>Edição:</b> editar o seu vídeo não gasta créditos de IA; para postar e ler os números, Instagram profissional ligado pelo Composio.</p></div>
+  </div>
 </section>
 
 <section class="bloco" id="precisa">
@@ -293,9 +309,10 @@
   <div class="surge">
     <details><summary>Preciso saber editar vídeo ou mexer com programação?</summary><p>Não. Você conversa com o Claude em português. Ele instala o que precisa, faz as perguntas e mostra tudo para você aprovar.</p></details>
     <details><summary>Preciso aparecer nos vídeos?</summary><p>Não. No Animado, o Reel é todo animado, com voz de IA ou com o seu áudio. No Edição, você grava e o Estúdio edita.</p></details>
-    <details><summary>Quanto gasto de créditos por Reel?</summary><p>Depende das ferramentas que você usa. Antes de gerar, o Estúdio mostra o custo e espera o seu ok. O roteiro é sempre aprovado antes de gastar crédito de voz.</p></details>
+    <details><summary>Quanto gasto de créditos por Reel?</summary><p>Depende do formato. No Animado, a voz e as imagens usam créditos do ElevenLabs, e as cenas com movimento (opcionais) usam créditos do seu plano do Google Flow; se você gravar o próprio áudio, a voz sai de graça. No Edição, editar o seu vídeo não gasta créditos de IA. Antes de gerar, o Estúdio mostra o custo e espera o seu ok, e o roteiro é sempre aprovado antes de gastar crédito de voz.</p></details>
     <details><summary>Funciona no celular?</summary><p>O Estúdio roda no app do Claude no computador. O Reel pronto você posta do celular normalmente (ou pelo Claude, no Edição).</p></details>
     <details><summary>O Estúdio garante seguidores ou vendas?</summary><p>Não. Ele ajuda você a postar com constância e com qualidade. Resultado depende do seu nicho, da sua oferta e da sua frequência.</p></details>
+    <details><summary>É assinatura? O que eu recebo?</summary><p>Não é assinatura: é compra única. Logo após o pagamento, chega por e-mail o acesso à área de membros da Kiwify, com o arquivo do Estúdio e o guia de instalação em PDF. A assinatura paga do Claude é à parte e continua sendo sua.</p></details>
     <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pela Kiwify: se não for para você, pede o reembolso.</p></details>
   </div>
 </section>
@@ -304,7 +321,7 @@
   <img src="assets/fabrica/mascote.webp" alt="Quentinho, a mascote do Estúdio">
   <h2 class="titulo surge" style="font-size:clamp(34px,5.4vw,70px)">Seu próximo Reel <em>sai quentinho</em></h2>
   <p class="lead surge" style="margin:14px auto 30px">Responda 5 perguntas e deixe o Estúdio trabalhar.</p>
-  <a class="botao surge" href="#oferta">Escolher o meu Estúdio →</a>
+  <a class="botao surge" href="#oferta">Ver pacotes →</a>
 </section>
 
 <footer>
