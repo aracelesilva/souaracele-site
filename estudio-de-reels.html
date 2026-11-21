@@ -127,7 +127,7 @@
   .plano .botao { margin-top:auto; justify-content:center; }
   .plano.breve { opacity:.85; }
   .nota { margin-top:20px; color:var(--mudo); font-size:14px; }
-  .antes { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+  .antes { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:28px; }
   .antes div { padding:18px 20px; border-radius:20px; background:#FFBF000D; border:1px solid var(--linha); }
   .antes b { display:block; color:var(--ambar); margin-bottom:4px; }
   .antes p b { display:inline; color:var(--texto); }
@@ -154,6 +154,13 @@
   @media (max-width: 860px) { .antes, .creditos-grade { grid-template-columns:1fr; } }
 
   .precisa { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:34px; }
+  .principal { margin-top:30px; padding:24px 28px; border-radius:24px; background:#FFBF0014; border:2px solid var(--ambar); }
+  .principal b { display:block; font-size:clamp(18px,1.8vw,22px); margin-bottom:6px; }
+  .principal p { color:var(--mudo); }
+  .precisa p + p { margin-top:8px; }
+  .precisa .quando { color:var(--ambar); font-weight:700; }
+  .precisa small { font-weight:600; color:var(--mudo); font-size:14px; }
+  .precisa a { color:var(--ambar); }
   .precisa div { padding:22px 24px; border-radius:22px; background:var(--cartao); border:1px solid var(--linha); }
   .precisa b { display:block; font-size:18px; margin-bottom:4px; }
   .precisa p { color:var(--mudo); font-size:15px; }
@@ -317,8 +324,7 @@
         <li>Tudo do Animado</li>
         <li>Corta erros e silêncios, legenda e anima o seu vídeo</li>
         <li>Letreiro atrás de você e chamada final</li>
-        <li>Posta e responde comentários, sempre com o seu ok</li>
-        <li>Lê os números dos seus Reels e o roteiro do dia pronto</li>
+        <li>Legenda do post e comentário fixado prontos para copiar</li>
       </ul>
       <a class="botao" data-checkout="studio" href="#oferta">Quero o Edição</a>
     </article>
@@ -340,17 +346,6 @@
   <div class="antes surge">
     <div><b>Compra única</b><p>Você paga uma vez, não é assinatura. Pagamento seguro pela Kiwify, com 7 dias de garantia.</p></div>
     <div><b>O que chega por e-mail</b><p>Na hora, o acesso à área de membros da Kiwify, com o arquivo do Estúdio e o guia de instalação em PDF, passo a passo.</p></div>
-    <div><b>Onde roda</b><p>No app do Claude no computador (Windows ou Mac). Requer assinatura paga do Claude.</p></div>
-  </div>
-  <div class="creditos surge">
-    <h3>Ferramentas e créditos, à parte</h3>
-    <p class="creditos-lead">O Estúdio usa as ferramentas que você assina. Antes de gerar qualquer coisa, ele mostra o custo e espera o seu ok.</p>
-    <div class="creditos-grade">
-      <div><b>🎙️ Narração</b><p>Com voz de IA, a narração usa créditos do ElevenLabs. Exemplo do nosso teste: uma narração de 22 a 24 segundos usou de 312 a 325 créditos. A conta grátis serve para testar; para postar com fins comerciais, o ElevenLabs pede plano pago. <strong>Se você gravar o próprio áudio, não gasta créditos para gerar a voz.</strong></p></div>
-      <div><b>🖼️ Imagens</b><p>As cenas ilustradas com a mascote da sua marca (de 4 a 8 por Reel) são geradas no <strong>Google Flow, com a sua conta Google: gerar imagens no Flow não gasta créditos</strong>. Se preferir gerar no ElevenLabs, as imagens usam créditos de lá, e o Estúdio mostra o custo antes. A mascote é criada uma vez só.</p></div>
-      <div><b>🎬 Movimento</b><p>Opcional. Para as cenas ganharem vida (a mascote piscando, o vapor subindo), cada imagem vira um clipe curto no Google Flow, com os créditos do seu plano. O consumo varia conforme a duração e a qualidade escolhidas. Sem isso, as cenas ficam paradas e a câmera anda, sem créditos de movimento. <a href="#comparar">Veja a diferença nos dois vídeos</a>.</p></div>
-      <div><b>✂️ Edição do seu vídeo</b><p>No Estúdio de Reels Edição, cortar, legendar e animar o vídeo que você gravou não gasta créditos de IA. Para postar e ler os números pelo Claude, é preciso Instagram profissional ligado pelo Composio.</p></div>
-    </div>
   </div>
 </section>
 
@@ -358,13 +353,16 @@
   <div class="surge">
     <span class="chapeu">Sem surpresa</span>
     <h2 class="titulo">O que você <em>precisa ter</em></h2>
-    <p class="lead">O Estúdio roda nas ferramentas que você assina. Ele avisa o custo antes de gastar qualquer crédito.</p>
+  </div>
+  <div class="principal surge">
+    <b>App do Claude no computador, com assinatura paga do Claude</b>
+    <p>Windows ou Mac. Na primeira vez, o Estúdio instala sozinho o que falta. Antes de gastar qualquer crédito, ele mostra o custo e espera o seu ok.</p>
   </div>
   <div class="precisa">
-    <div class="surge"><b>Assinatura paga do Claude</b><p>E o app do Claude no computador (Windows ou Mac). Na primeira vez, o Estúdio instala sozinha o que falta.</p></div>
-    <div class="surge"><b>ElevenLabs</b><p>Para a voz de IA. A conta grátis serve para testar; para postar com fins comerciais, o ElevenLabs pede um plano pago. Prefere a sua voz? Grave o áudio no celular e não gasta nada.</p></div>
-    <div class="surge"><b>Google Flow e Claude no Chrome</b><p>O Flow, com a sua conta Google, gera as imagens das cenas sem gastar créditos. Só as cenas com movimento (vídeo) usam créditos do seu plano. A extensão Claude no Chrome deixa o Claude usar o Flow por você.</p></div>
-    <div class="surge"><b>Instagram profissional (Edição)</b><p>Só para postar, responder e ler os números pelo Claude. Nada é postado sem o seu ok.</p></div>
+    <div class="surge"><b>🎙️ Narração</b><p><span class="quando">Quando:</span> em todo Reel, para a voz.</p><p><span class="quando">Créditos:</span> com voz de IA, usa créditos do ElevenLabs (no nosso teste, uma narração de 22 a 24 segundos usou de 312 a 325 créditos; a conta grátis serve para testar e, para postar com fins comerciais, o ElevenLabs pede plano pago). <strong>Com o seu próprio áudio, gravado no celular, não gasta créditos.</strong></p></div>
+    <div class="surge"><b>🖼️ Criação de imagens</b><p><span class="quando">Quando:</span> no Animado, de 4 a 8 cenas por Reel, com a mascote da sua marca (criada uma vez só).</p><p><span class="quando">Créditos:</span> no Google Flow, com a sua conta Google e a extensão Claude no Chrome, <strong>gerar imagens não gasta créditos</strong>. Se preferir o ElevenLabs, as imagens usam créditos de lá.</p></div>
+    <div class="surge"><b>🎬 Animação das imagens <small>(opcional)</small></b><p><span class="quando">Quando:</span> se você quiser que as cenas ganhem vida, com a mascote piscando e se mexendo.</p><p><span class="quando">Créditos:</span> cada cena vira um clipe curto no Google Flow e usa créditos do seu plano, conforme a duração e a qualidade. Sem animação, a câmera anda sobre as imagens e não gasta créditos. <a href="#comparar">Veja a diferença nos dois vídeos</a>.</p></div>
+    <div class="surge"><b>✂️ Edição do seu vídeo</b><p><span class="quando">Quando:</span> no Edição, com o vídeo que você gravou.</p><p><span class="quando">Créditos:</span> cortar, legendar e animar o seu vídeo não gasta créditos de IA. O Reel sai pronto para você postar.</p></div>
   </div>
 </section>
 
@@ -377,7 +375,7 @@
     <details><summary>Preciso saber editar vídeo ou mexer com programação?</summary><p>Não. Você conversa com o Claude em português. Ele instala o que precisa, faz as perguntas e mostra tudo para você aprovar.</p></details>
     <details><summary>Preciso aparecer nos vídeos?</summary><p>Não. No Animado, o Reel é todo animado, com voz de IA ou com o seu áudio. No Edição, você grava e o Estúdio edita.</p></details>
     <details><summary>Quanto gasto de créditos por Reel?</summary><p>Depende do formato. No Animado, a voz de IA usa créditos do ElevenLabs (se você gravar o próprio áudio, a voz sai de graça); as imagens são geradas no Google Flow, que não cobra créditos por imagem; e as cenas com movimento (opcionais) usam créditos do seu plano do Google Flow. No Edição, editar o seu vídeo não gasta créditos de IA. Antes de gerar, o Estúdio mostra o custo e espera o seu ok, e o roteiro é sempre aprovado antes de gastar crédito de voz.</p></details>
-    <details><summary>Funciona no celular?</summary><p>O Estúdio roda no app do Claude no computador. O Reel pronto você posta do celular normalmente (ou pelo Claude, no Edição).</p></details>
+    <details><summary>Funciona no celular?</summary><p>O Estúdio roda no app do Claude no computador. O Reel pronto você posta do celular, normalmente.</p></details>
     <details><summary>O Estúdio garante seguidores ou vendas?</summary><p>Não. Ele ajuda você a postar com constância e com qualidade. Resultado depende do seu nicho, da sua oferta e da sua frequência.</p></details>
     <details><summary>É assinatura? O que eu recebo?</summary><p>Não é assinatura: é compra única. Logo após o pagamento, chega por e-mail o acesso à área de membros da Kiwify, com o arquivo do Estúdio e o guia de instalação em PDF. A assinatura paga do Claude é à parte e continua sendo sua.</p></details>
     <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pela Kiwify: se não for para você, pede o reembolso.</p></details>
