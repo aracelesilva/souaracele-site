@@ -19,11 +19,13 @@
   html { scroll-behavior:smooth; }
   #exemplos { scroll-margin-top:24px; }
   .arraste { display:none; }
+  @keyframes empurra { 50% { transform:translateX(6px); } }
   @media (max-width: 860px) {
     #exemplos { gap:0; }
     #exemplos > div.surge:first-child { display:contents; }
     #exemplos .chapeu { order:1; justify-self:start; } #exemplos .titulo { order:2; } #exemplos .comparar { order:3; margin:22px 0 0; }
-    #exemplos .arraste { order:4; display:block; margin:10px 0 24px; text-align:center; color:var(--mudo); font-size:14px; }
+    #exemplos .arraste { order:4; display:flex; align-items:center; justify-content:center; gap:10px; width:max-content; max-width:100%; margin:14px auto 26px; padding:10px 18px; border-radius:999px; background:var(--ambar); color:#111; font-weight:800; font-size:16px; box-shadow:0 0 24px #FFBF0055; justify-self:center; }
+    #exemplos .arraste b { display:inline-block; font-size:20px; animation:empurra 1s infinite ease-in-out; }
     #exemplos .lead { order:5; } #exemplos .pecas { order:6; margin-top:20px; }
   }
   body { background:var(--fundo); color:var(--texto); font-family:Inter,system-ui,sans-serif; line-height:1.5; overflow-x:hidden; }
@@ -199,8 +201,7 @@
 
   .final { text-align:center; padding:clamp(80px,12vw,150px) var(--gutter); background:radial-gradient(60% 70% at 50% 60%, #B87A0040, transparent 70%); }
   /* a caneca vem num fundo preto puro: "lighten" faz o preto sumir no fundo da página e fica só a caneca, solta */
-  .final .quentinho { width:min(280px,64vw); height:auto; margin:0 auto 10px; display:block; mix-blend-mode:lighten; animation:flutua 3.2s infinite ease-in-out; }
-  @media (prefers-reduced-motion: reduce) { .final .quentinho { animation:none; } }
+  .final .quentinho { width:min(300px,68vw); height:auto; margin:0 auto 10px; display:block; background:#000; mix-blend-mode:lighten; }
   mark.gratis { color:#0A0A0A; background:#FFBF00; font-weight:700; padding:2px 7px; border-radius:6px; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
   @keyframes flutua { 50% { transform:translateY(-14px) rotate(-3deg); } }
   footer { text-align:center; padding:40px var(--gutter) 60px; color:var(--mudo); font-size:14px; border-top:1px solid #ffffff12; }
@@ -308,7 +309,7 @@
       <figcaption><b>Estúdio de Reels Edição</b><em>Seu vídeo gravado</em><span>Cortes, legenda e letreiro</span></figcaption>
     </figure>
   </div>
-  <p class="arraste" aria-hidden="true">Arraste para o lado para ver os 3 vídeos →</p>
+  <p class="arraste" aria-hidden="true">👆 Arraste e veja os 3 vídeos <b>→</b></p>
 </section>
 
 <section class="bloco demo outro-nicho">
@@ -431,7 +432,7 @@
 </section>
 
 <section class="final">
-  <img class="quentinho" src="assets/fabrica/quentinho-solto.webp" alt="Quentinho, a mascote do Estúdio, piscando o olho" width="600" height="804">
+  <video class="quentinho" src="assets/fabrica/quentinho-piscando.mp4" poster="assets/fabrica/quentinho-piscando.webp" autoplay muted loop playsinline width="480" height="666" aria-label="Quentinho, a mascote do Estúdio, piscando o olho"></video>
   <h2 class="titulo surge" style="font-size:clamp(34px,5.4vw,70px)">Seu próximo Reel <em>sai quentinho</em></h2>
   <p class="lead surge" style="margin:14px auto 30px">Responda 5 perguntas e deixe o Estúdio trabalhar.</p>
   <a class="botao surge" href="#oferta">Ver pacotes →</a>
