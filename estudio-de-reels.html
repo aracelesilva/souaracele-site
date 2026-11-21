@@ -41,7 +41,7 @@
   .faiscas { position:absolute; inset:0; pointer-events:none; }
   .barra { position:absolute; left:0; bottom:0; height:6px; width:100%; background:var(--ambar); transform-origin:left; transform:scaleX(var(--p,0)); }
   .cena { position:absolute; inset:0; pointer-events:none; }
-  .cena .frase { position:absolute; left:var(--gutter); right:var(--gutter); top:clamp(84px,12vh,130px); text-align:center; font-size:clamp(34px,6.2vw,84px); text-shadow:0 6px 0 #0A0A0A, 0 0 40px #0A0A0A; }
+  .cena .frase { position:absolute; left:var(--gutter); right:var(--gutter); top:clamp(84px,12vh,130px); text-align:center; font-size:clamp(34px,4.6vw,63px); text-shadow:0 6px 0 #0A0A0A, 0 0 40px #0A0A0A; }
   .cena .frase span { display:inline-block; opacity:0; transform:translateY(40px) scale(1.25); transition:opacity .25s, transform .35s cubic-bezier(.3,1.8,.5,1); transition-delay:calc(var(--i) * 90ms); margin:0 .1em; }
   .cena.ativa .frase span { opacity:1; transform:none; }
   .cena .peca { position:absolute; opacity:0; transform:scale(.3) rotate(-8deg); transition:opacity .3s .35s, transform .5s .35s cubic-bezier(.3,1.7,.5,1); }
@@ -67,9 +67,9 @@
   .lista div i { font-style:normal; width:40px; height:40px; border-radius:50%; display:grid; place-items:center; border:3px solid #ffffff55; color:transparent; font-size:22px; }
   .cena.ativa .lista div { opacity:1; border-color:#FFBF00AA; box-shadow:0 0 30px #FFBF0033; transition-delay:calc(.5s + var(--i) * .45s); }
   .cena.ativa .lista div i { background:var(--ambar); border-color:var(--ambar); color:#111; transition:all .3s calc(.5s + var(--i) * .45s); }
-  .chamada-cine { position:absolute; left:50%; bottom:max(128px,17vh); translate:-50% 0; text-align:center; width:min(640px,90vw); opacity:0; transform:translateY(30px); transition:all .5s .4s; pointer-events:none; }
+  .chamada-cine { position:absolute; left:50%; bottom:max(128px,17vh); translate:-50% 0; text-align:center; width:min(780px,90vw); opacity:0; transform:translateY(30px); transition:all .5s .4s; pointer-events:none; }
   .cena.ativa .chamada-cine { opacity:1; transform:none; pointer-events:auto; }
-  .chamada-cine p { display:inline-block; font-weight:600; font-size:clamp(16px,1.8vw,21px); margin:0 0 16px; padding:10px 18px; border-radius:16px; background:#0A0A0AD9; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .chamada-cine p { display:inline-block; font-weight:600; font-size:clamp(16px,1.8vw,21px); margin:0 0 16px; padding:5px 12px; border-radius:10px; background:#0A0A0A8C; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); text-shadow:0 1px 3px #000, 0 0 14px #000; }
   /* faixa "Amanhã eu gravo…": menor, ao lado da personagem (à direita do rosto), nunca sobre título, subtítulo ou botão.
      O filme é vertical: no computador ele aparece inteiro no centro (largura = 56,25% da altura); no celular cobre a tela. */
   .balao--entrada { top:47%; left:calc(50% + 7svh); translate:0 0; padding:14px 20px; font-size:clamp(15px,2.2svh,24px); max-width:24svh; }
