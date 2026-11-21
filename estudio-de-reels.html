@@ -42,7 +42,7 @@
 
   /* filme na rolagem */
   .cine { position:relative; height:720vh; }
-  .palco { position:sticky; top:0; height:100svh; overflow:hidden; }
+  .palco { position:sticky; top:0; height:100vh; height:100lvh; overflow:hidden; }
   .palco canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
   .vinheta { position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,#0A0A0AE6 0%,#0A0A0A00 24%,#0A0A0A00 60%,#0A0A0AF2 100%); }
   .faiscas { position:absolute; inset:0; pointer-events:none; }
@@ -79,9 +79,9 @@
   .chamada-cine p { display:inline-block; font-weight:600; font-size:clamp(16px,1.8vw,21px); margin:0 0 16px; padding:5px 12px; border-radius:10px; background:#0A0A0A8C; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); text-shadow:0 1px 3px #000, 0 0 14px #000; }
   /* faixa "Amanhã eu gravo…": menor, ao lado da personagem (à direita do rosto), nunca sobre título, subtítulo ou botão.
      O filme é vertical: no computador ele aparece inteiro no centro (largura = 56,25% da altura); no celular cobre a tela. */
-  .balao--entrada { top:47%; left:calc(50% + 7svh); translate:0 0; padding:14px 20px; font-size:clamp(15px,2.2svh,24px); max-width:24svh; }
-  @media (max-aspect-ratio: 4/5) { .balao--entrada { left:calc(50% + 0.25 * max(100vw, 56.25svh)); translate:-50% 0; max-width:31vw; font-size:clamp(13px,3.6vw,18px); padding:10px 14px; } }
-  @media (max-aspect-ratio: 4/5) and (max-width: 340px) { .balao--entrada { left:50%; top:auto; bottom:calc(max(128px,17vh) + 150px); max-width:80vw; } }
+  .balao--entrada { top:47%; left:calc(50% + 7lvh); translate:0 0; padding:14px 20px; font-size:clamp(15px,2.2lvh,24px); max-width:24lvh; }
+  @media (max-aspect-ratio: 4/5) { .balao--entrada { left:calc(50% + 0.25 * max(100vw, 56.25lvh)); translate:-50% 0; max-width:31vw; font-size:clamp(13px,3.6vw,18px); padding:10px 14px; } }
+  @media (max-aspect-ratio: 4/5) and (max-width: 300px) { .balao--entrada { left:50%; top:auto; bottom:calc(max(128px,17vh) + 150px); max-width:80vw; } }
   .dica { position:absolute; left:50%; bottom:28px; translate:-50% 0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--mudo); transition:opacity .4s; }
   .dica::after { content:""; display:block; width:2px; height:34px; margin:10px auto 0; background:linear-gradient(var(--ambar),transparent); animation:desce 1.4s infinite; }
   @keyframes desce { from { transform:scaleY(0); transform-origin:top; } to { transform:scaleY(1); transform-origin:top; } }
@@ -182,8 +182,8 @@
   details p { color:var(--mudo); margin-top:10px; max-width:760px; }
 
   .final { text-align:center; padding:clamp(80px,12vw,150px) var(--gutter); background:radial-gradient(60% 70% at 50% 60%, #B87A0040, transparent 70%); }
-  .final .quentinho { width:min(300px,70vw); aspect-ratio:480/574; object-fit:cover; margin:0 auto 6px; display:block; background:transparent;
-    -webkit-mask-image:radial-gradient(closest-side, #000 62%, transparent 100%); mask-image:radial-gradient(closest-side, #000 62%, transparent 100%); }
+  .final .quentinho { width:min(320px,74vw); aspect-ratio:480/574; object-fit:cover; margin:0 auto 6px; display:block; background:transparent; mix-blend-mode:lighten;
+    -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 48%, #000 55%, transparent 100%); mask-image:radial-gradient(ellipse 50% 50% at 50% 48%, #000 55%, transparent 100%); }
   mark.gratis { color:#0A0A0A; background:#FFBF00; font-weight:700; padding:2px 7px; border-radius:6px; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
   @keyframes flutua { 50% { transform:translateY(-14px) rotate(-3deg); } }
   footer { text-align:center; padding:40px var(--gutter) 60px; color:var(--mudo); font-size:14px; border-top:1px solid #ffffff12; }
@@ -198,7 +198,7 @@
     .cine { height:640vh; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .cine { height:auto; } .palco { position:relative; height:100svh; }
+    .cine { height:auto; } .palco { position:relative; height:100vh; height:100lvh; }
     .cena:not(:first-of-type) { display:none; } .cena:first-of-type { opacity:1; }
     .cena .frase span, .cena .peca, .surge { opacity:1 !important; transform:none !important; transition:none !important; }
   }
@@ -413,7 +413,7 @@
 </section>
 
 <section class="final">
-  <video class="quentinho" src="assets/fabrica/quentinho-pisca.mp4" poster="assets/fabrica/quentinho-pisca.webp" autoplay muted loop playsinline aria-label="Quentinho, a mascote do Estúdio, piscando o olho"></video>
+  <video class="quentinho" src="assets/fabrica/quentinho-pisca.mp4?v=2" poster="assets/fabrica/quentinho-pisca.webp?v=2" autoplay muted loop playsinline aria-label="Quentinho, a mascote do Estúdio, piscando o olho"></video>
   <h2 class="titulo surge" style="font-size:clamp(34px,5.4vw,70px)">Seu próximo Reel <em>sai quentinho</em></h2>
   <p class="lead surge" style="margin:14px auto 30px">Responda 5 perguntas e deixe o Estúdio trabalhar.</p>
   <a class="botao surge" href="#oferta">Ver pacotes →</a>
