@@ -67,9 +67,14 @@
   .lista div i { font-style:normal; width:40px; height:40px; border-radius:50%; display:grid; place-items:center; border:3px solid #ffffff55; color:transparent; font-size:22px; }
   .cena.ativa .lista div { opacity:1; border-color:#FFBF00AA; box-shadow:0 0 30px #FFBF0033; transition-delay:calc(.5s + var(--i) * .45s); }
   .cena.ativa .lista div i { background:var(--ambar); border-color:var(--ambar); color:#111; transition:all .3s calc(.5s + var(--i) * .45s); }
-  .chamada-cine { position:absolute; left:50%; bottom:clamp(60px,12vh,140px); translate:-50% 0; text-align:center; width:min(640px,90vw); opacity:0; transform:translateY(30px); transition:all .5s .4s; pointer-events:none; }
+  .chamada-cine { position:absolute; left:50%; bottom:max(128px,17vh); translate:-50% 0; text-align:center; width:min(640px,90vw); opacity:0; transform:translateY(30px); transition:all .5s .4s; pointer-events:none; }
   .cena.ativa .chamada-cine { opacity:1; transform:none; pointer-events:auto; }
-  .chamada-cine p { font-weight:600; font-size:clamp(17px,1.8vw,21px); margin:0 0 18px; text-shadow:0 2px 12px #000; }
+  .chamada-cine p { display:inline-block; font-weight:600; font-size:clamp(16px,1.8vw,21px); margin:0 0 16px; padding:10px 18px; border-radius:16px; background:#0A0A0AD9; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  /* faixa "Amanhã eu gravo…": menor, ao lado da personagem (à direita do rosto), nunca sobre título, subtítulo ou botão.
+     O filme é vertical: no computador ele aparece inteiro no centro (largura = 56,25% da altura); no celular cobre a tela. */
+  .balao--entrada { top:47%; left:calc(50% + 7svh); translate:0 0; padding:14px 20px; font-size:clamp(15px,2.2svh,24px); max-width:24svh; }
+  @media (max-aspect-ratio: 4/5) { .balao--entrada { left:calc(50% + 0.25 * max(100vw, 56.25svh)); translate:-50% 0; max-width:31vw; font-size:clamp(13px,3.6vw,18px); padding:10px 14px; } }
+  @media (max-aspect-ratio: 4/5) and (max-width: 340px) { .balao--entrada { left:50%; top:auto; bottom:calc(max(128px,17vh) + 150px); max-width:80vw; } }
   .dica { position:absolute; left:50%; bottom:28px; translate:-50% 0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--mudo); transition:opacity .4s; }
   .dica::after { content:""; display:block; width:2px; height:34px; margin:10px auto 0; background:linear-gradient(var(--ambar),transparent); animation:desce 1.4s infinite; }
   @keyframes desce { from { transform:scaleY(0); transform-origin:top; } to { transform:scaleY(1); transform-origin:top; } }
@@ -194,7 +199,7 @@
 
     <div class="cena" data-de="0" data-ate="0.14">
       <h1 class="frase titulo">Você adia o Reels porque <em>não quer aparecer?</em></h1>
-      <div class="peca balao treme" style="--r:5deg;left:62%;top:52%">Amanhã eu gravo…</div>
+      <div class="peca balao balao--entrada treme" style="--r:5deg">Amanhã eu gravo…</div>
       <div class="chamada-cine">
         <p>Crie Reels animados sem aparecer ou envie seu vídeo para edição.</p>
         <a class="botao" href="#oferta">Ver pacotes →</a>
@@ -260,7 +265,8 @@
     </figure>
     <figure>
       <div class="celular">
-        <video src="assets/video/clone-demo.mp4" poster="assets/video/clone-demo.webp" muted loop playsinline preload="none"></video>
+        <video src="assets/video/clone-demo.mp4?v=2" poster="assets/video/clone-demo.webp" muted loop playsinline preload="none"></video>
+        <button class="som" type="button">🔊 Ouvir</button>
       </div>
       <figcaption><b>Estúdio de Reels Edição</b><em>Seu vídeo gravado</em><span>Cortes, legenda e letreiro</span></figcaption>
     </figure>

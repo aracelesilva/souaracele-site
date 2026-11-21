@@ -348,3 +348,7 @@ blockquote { margin: 18px 0 0; font: italic 400 clamp(22px, 2vw, 30px)/1.3 var(-
 @media (max-width: 760px) { .caos { --esp: .55; --esp-y: .95; } .papel { max-width: 46vw; white-space: normal; } }
 @media (max-width: 760px) { .caos { top: 20svh; bottom: -6svh; --esp-y: .62; } }
 @media (max-width: 760px) { .caos { top: 30svh; bottom: -4svh; --esp-y: .5; } }
+
+/* Botão de som do vídeo do clone */
+.celular { position: relative; }
+.som-clone { position: absolute; right: 18px; bottom: 18px; z-index: 2; border: 0; border-radius: 999px; padding: 9px 14px; background: rgb(11 9 7 / .8); color: #fff; font: 700 14px/1 Inter, sans-serif; cursor: pointer; }

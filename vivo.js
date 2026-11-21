@@ -124,10 +124,12 @@
   if (luz && !toque) addEventListener("pointermove", (e) => { luz.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`; }, { passive: true });
 })();
 
-/* Vídeo do clone: toca sozinho (sem som) só quando aparece na tela; com movimento reduzido, mostra os controles */
+/* Vídeo do clone: toca sozinho (sem som, com botão Ouvir) só quando aparece na tela; com movimento reduzido, mostra os controles */
 (() => {
   const v = document.querySelector(".video-clone");
   if (!v) return;
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) { v.controls = true; return; }
   new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.play().catch(() => { v.controls = true; }); } else v.pause(); }, { threshold: 0.4 }).observe(v);
+  const som = document.querySelector(".som-clone");
+  if (som) som.addEventListener("click", () => { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); } som.textContent = v.muted ? "🔊 Ouvir" : "🔇 Sem som"; });
 })();
