@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fábrica de Reels · souaracele</title>
+<meta name="description" content="Responda 5 perguntas uma vez. Depois, para cada Reel, só diga o tema. A Fábrica escreve, você aprova e recebe o Reel pronto: voz, cenas que se mexem, textos e legenda.">
+<meta property="og:title" content="Fábrica de Reels · Reels prontos sem aparecer">
+<meta property="og:description" content="Responda 5 perguntas e receba seu Reel pronto, com voz, cenas animadas e legenda.">
+<meta property="og:image" content="https://www.souaracele.com.br/assets/fabrica/reel-demo.webp">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="assets/fabrica/mascote.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --fundo:#0A0A0A; --ambar:#FFBF00; --ambar2:#B87A00; --texto:#FFFFFF; --mudo:#B9AD99; --cartao:#151210; --linha:#FFBF0033; --gutter:clamp(16px,5vw,64px); }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--fundo); color:var(--texto); font-family:Inter,system-ui,sans-serif; line-height:1.5; overflow-x:hidden; }
+  a { color:inherit; }
+  em { font-style:normal; color:var(--ambar); }
+  .titulo { font-family:'Archivo Black',Inter,sans-serif; text-transform:uppercase; letter-spacing:-.5px; line-height:1.02; }
+  .botao { display:inline-flex; align-items:center; gap:10px; padding:18px 30px; border-radius:999px; background:var(--ambar); color:#111; font-weight:800; font-size:18px; text-decoration:none; box-shadow:0 0 40px #FFBF0055; transition:transform .2s, box-shadow .2s; }
+  .botao:hover { transform:translateY(-2px) scale(1.02); box-shadow:0 0 70px #FFBF0088; }
+  .botao--vazado { background:transparent; color:var(--ambar); border:2px solid var(--ambar); box-shadow:none; }
+
+  /* topo */
+  .topo { position:fixed; inset:0 0 auto; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px var(--gutter); transition:background .3s; }
+  .topo.rolou { background:#0A0A0ACC; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+  .marca { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; }
+  .marca img { width:38px; height:38px; border-radius:50%; object-fit:cover; background:#222; }
+  .marca b { color:var(--ambar); }
+  .topo .botao { padding:11px 20px; font-size:15px; }
+
+  /* filme na rolagem */
+  .cine { position:relative; height:720vh; }
+  .palco { position:sticky; top:0; height:100svh; overflow:hidden; }
+  .palco canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .vinheta { position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,#0A0A0AE6 0%,#0A0A0A00 24%,#0A0A0A00 60%,#0A0A0AF2 100%); }
+  .faiscas { position:absolute; inset:0; pointer-events:none; }
+  .barra { position:absolute; left:0; bottom:0; height:6px; width:100%; background:var(--ambar); transform-origin:left; transform:scaleX(var(--p,0)); }
+  .cena { position:absolute; inset:0; pointer-events:none; }
+  .cena .frase { position:absolute; left:var(--gutter); right:var(--gutter); top:clamp(84px,12vh,130px); text-align:center; font-size:clamp(34px,6.2vw,84px); text-shadow:0 6px 0 #0A0A0A, 0 0 40px #0A0A0A; }
+  .cena .frase span { display:inline-block; opacity:0; transform:translateY(40px) scale(1.25); transition:opacity .25s, transform .35s cubic-bezier(.3,1.8,.5,1); transition-delay:calc(var(--i) * 90ms); margin:0 .1em; }
+  .cena.ativa .frase span { opacity:1; transform:none; }
+  .cena .peca { position:absolute; opacity:0; transform:scale(.3) rotate(-8deg); transition:opacity .3s .35s, transform .5s .35s cubic-bezier(.3,1.7,.5,1); }
+  .cena.ativa .peca { opacity:1; transform:scale(1) rotate(var(--r,0deg)); }
+  .cena.ativa .peca.treme { animation:treme .25s .9s infinite alternate ease-in-out; }
+  @keyframes treme { to { rotate:3deg; } }
+  .balao { left:50%; top:46%; translate:-50% 0; padding:24px 34px; background:#fff; color:#111; font:400 clamp(26px,3.4vw,44px)/1 'Archivo Black',Inter; text-transform:uppercase; text-align:center;
+    clip-path:polygon(0% 12%,8% 0%,22% 9%,36% 0%,50% 8%,64% 0%,78% 9%,92% 0%,100% 14%,94% 34%,100% 52%,93% 70%,100% 88%,86% 100%,70% 92%,54% 100%,38% 92%,22% 100%,8% 90%,0% 76%,6% 56%,0% 38%); filter:drop-shadow(0 14px 24px #000a); }
+  .neon { left:50%; top:40%; translate:-50% 0; padding:20px 40px; border:6px solid var(--ambar); border-radius:22px; background:#0A0A0AAA; font:400 clamp(34px,5vw,70px)/1 'Archivo Black',Inter; text-transform:uppercase;
+    text-shadow:0 0 12px var(--ambar),0 0 40px var(--ambar); box-shadow:0 0 30px var(--ambar), inset 0 0 30px var(--ambar); }
+  .cena.ativa .neon { animation:pisca 1.6s .4s 1 steps(1); }
+  @keyframes pisca { 0%{opacity:1} 8%{opacity:.2} 14%{opacity:1} 22%{opacity:.3} 30%,100%{opacity:1} }
+  .numero { left:50%; top:30%; translate:-50% 0; text-align:center; }
+  .numero b { display:block; font:400 clamp(160px,26vw,300px)/.9 'Archivo Black',Inter; color:var(--ambar); text-shadow:0 0 60px #FFBF0066; }
+  .numero small { font-weight:800; font-size:clamp(20px,2.6vw,34px); text-transform:uppercase; letter-spacing:3px; }
+  .caixa { left:50%; top:40%; translate:-50% 0; width:min(620px,88vw); padding:22px 26px; border-radius:26px; background:#FBF7EE; color:#111; box-shadow:0 24px 60px #000c; }
+  .caixa .campo { font:600 clamp(20px,2.4vw,30px)/1.3 Inter; min-height:2.6em; }
+  .caixa .campo i { display:inline-block; width:3px; height:1em; background:#111; vertical-align:-3px; animation:cursor .8s infinite steps(1); }
+  @keyframes cursor { 50% { opacity:0; } }
+  .caixa .bt { margin:14px 0 0 auto; width:max-content; padding:12px 26px; border-radius:999px; background:var(--ambar); font:400 20px/1 'Archivo Black',Inter; text-transform:uppercase; }
+  .lista { left:50%; top:34%; translate:-50% 0; width:min(520px,86vw); display:grid; gap:12px; }
+  .lista div { display:flex; align-items:center; gap:16px; padding:14px 20px; border-radius:20px; background:#0A0A0AE0; border:2px solid #ffffff22; font-weight:800; font-size:clamp(20px,2.4vw,30px); opacity:.25; transition:opacity .3s, border-color .3s, box-shadow .3s; }
+  .lista div i { font-style:normal; width:40px; height:40px; border-radius:50%; display:grid; place-items:center; border:3px solid #ffffff55; color:transparent; font-size:22px; }
+  .cena.ativa .lista div { opacity:1; border-color:#FFBF00AA; box-shadow:0 0 30px #FFBF0033; transition-delay:calc(.5s + var(--i) * .45s); }
+  .cena.ativa .lista div i { background:var(--ambar); border-color:var(--ambar); color:#111; transition:all .3s calc(.5s + var(--i) * .45s); }
+  .chamada-cine { position:absolute; left:50%; bottom:clamp(60px,12vh,140px); translate:-50% 0; text-align:center; width:min(640px,90vw); opacity:0; transform:translateY(30px); transition:all .5s .4s; pointer-events:none; }
+  .cena.ativa .chamada-cine { opacity:1; transform:none; pointer-events:auto; }
+  .chamada-cine p { font-weight:600; font-size:clamp(17px,1.8vw,21px); margin:0 0 18px; text-shadow:0 2px 12px #000; }
+  .dica { position:absolute; left:50%; bottom:28px; translate:-50% 0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--mudo); transition:opacity .4s; }
+  .dica::after { content:""; display:block; width:2px; height:34px; margin:10px auto 0; background:linear-gradient(var(--ambar),transparent); animation:desce 1.4s infinite; }
+  @keyframes desce { from { transform:scaleY(0); transform-origin:top; } to { transform:scaleY(1); transform-origin:top; } }
+  .cine.andou .dica { opacity:0; }
+
+  /* seções */
+  section.bloco { padding:clamp(70px,10vw,130px) var(--gutter); max-width:1180px; margin:0 auto; }
+  .chapeu { display:inline-block; font-size:13px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--ambar); margin-bottom:14px; }
+  h2.titulo { font-size:clamp(32px,5vw,62px); margin-bottom:18px; }
+  .lead { color:var(--mudo); font-size:clamp(17px,1.6vw,20px); max-width:640px; }
+  .surge { opacity:0; transform:translateY(40px); transition:opacity .8s, transform .8s; }
+  .surge.visto { opacity:1; transform:none; }
+
+  .demo { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(30px,5vw,80px); align-items:center; }
+  .celular { position:relative; width:min(340px,80vw); margin:0 auto; aspect-ratio:9/16; border-radius:42px; padding:12px; background:#1b1814; box-shadow:0 0 0 2px #FFBF0044, 0 40px 120px #FFBF0022, 0 30px 80px #000; }
+  .celular video { width:100%; height:100%; object-fit:cover; border-radius:32px; display:block; background:#000; }
+  .som { position:absolute; right:22px; bottom:22px; border:0; border-radius:999px; padding:10px 16px; background:#0A0A0ACC; color:#fff; font-weight:700; cursor:pointer; }
+  .pecas { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .pecas span { padding:8px 14px; border-radius:999px; border:1px solid var(--linha); background:#FFBF000D; font-weight:600; font-size:15px; }
+
+  .passos { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px; }
+  .passo { position:relative; border-radius:28px; overflow:hidden; background:var(--cartao); border:1px solid var(--linha); min-height:420px; display:flex; flex-direction:column; justify-content:flex-end; }
+  .passo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.75; transition:transform 1.2s, opacity .6s; }
+  .passo:hover img { transform:scale(1.06); opacity:.9; }
+  .passo::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%,#0A0A0AF5 82%); }
+  .passo div { position:relative; z-index:1; padding:26px; }
+  .passo b { font-family:'Archivo Black',Inter; font-size:64px; line-height:1; color:var(--ambar); display:block; }
+  .passo h3 { font-size:22px; margin:6px 0; }
+  .passo p { color:var(--mudo); }
+
+  .planos { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px; align-items:stretch; }
+  .plano { position:relative; border-radius:30px; padding:30px 26px; background:var(--cartao); border:1px solid var(--linha); display:flex; flex-direction:column; gap:14px; }
+  .plano.destaque { border:2px solid var(--ambar); box-shadow:0 0 70px #FFBF0026; transform:translateY(-10px); }
+  .plano .selo { position:absolute; top:-15px; left:26px; padding:6px 14px; border-radius:999px; background:var(--ambar); color:#111; font-weight:800; font-size:13px; letter-spacing:1px; text-transform:uppercase; }
+  .plano small { font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--ambar); font-size:12px; }
+  .plano h3 { font-family:'Archivo Black',Inter; font-size:clamp(22px,2.2vw,28px); line-height:1.05; text-transform:uppercase; }
+  .plano .preco { font-family:'Archivo Black',Inter; font-size:52px; line-height:1; }
+  .plano .preco sup { font-size:20px; vertical-align:22px; margin-right:4px; }
+  .plano .frase { color:#E9E1D2; }
+  .plano ul { list-style:none; display:grid; gap:9px; margin:6px 0 10px; }
+  .plano li { padding-left:30px; position:relative; color:var(--mudo); }
+  .plano li::before { content:"✓"; position:absolute; left:0; top:0; width:22px; height:22px; border-radius:50%; background:#FFBF0022; color:var(--ambar); font-weight:800; font-size:13px; display:grid; place-items:center; }
+  .plano .botao { margin-top:auto; justify-content:center; }
+  .plano.breve { opacity:.85; }
+  .nota { margin-top:20px; color:var(--mudo); font-size:14px; }
+
+  .precisa { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:34px; }
+  .precisa div { padding:22px 24px; border-radius:22px; background:var(--cartao); border:1px solid var(--linha); }
+  .precisa b { display:block; font-size:18px; margin-bottom:4px; }
+  .precisa p { color:var(--mudo); font-size:15px; }
+
+  details { border-bottom:1px solid #ffffff1a; padding:20px 0; }
+  summary { cursor:pointer; font-weight:700; font-size:18px; list-style:none; display:flex; justify-content:space-between; gap:20px; }
+  summary::after { content:"+"; color:var(--ambar); font-size:26px; line-height:1; }
+  details[open] summary::after { content:"−"; }
+  details p { color:var(--mudo); margin-top:10px; max-width:760px; }
+
+  .final { text-align:center; padding:clamp(80px,12vw,150px) var(--gutter); background:radial-gradient(60% 70% at 50% 60%, #B87A0040, transparent 70%); }
+  .final img { width:180px; margin:0 auto 20px; display:block; animation:flutua 3s infinite ease-in-out; }
+  @keyframes flutua { 50% { transform:translateY(-14px) rotate(-3deg); } }
+  footer { text-align:center; padding:40px var(--gutter) 60px; color:var(--mudo); font-size:14px; border-top:1px solid #ffffff12; }
+  footer a { color:var(--ambar); }
+
+  @media (max-width: 860px) {
+    .demo, .passos, .planos, .precisa { grid-template-columns:1fr; }
+    .plano.destaque { transform:none; }
+    .passo { min-height:360px; }
+    .cine { height:640vh; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cine { height:auto; } .palco { position:relative; height:100svh; }
+    .cena:not(:first-of-type) { display:none; } .cena:first-of-type { opacity:1; }
+    .cena .frase span, .cena .peca, .surge { opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a class="marca" href="index.html"><img src="assets/img/sobre.webp" alt=""><span>sou<b>aracele</b></span></a>
+  <a class="botao" href="#oferta">Quero a Fábrica</a>
+</header>
+
+<section class="cine" id="filme" aria-label="Como a Fábrica de Reels funciona">
+  <div class="palco">
+    <canvas aria-hidden="true"></canvas>
+    <div class="vinheta"></div>
+    <canvas class="faiscas" aria-hidden="true"></canvas>
+
+    <div class="cena" data-de="0" data-ate="0.14">
+      <h1 class="frase titulo">Você adia o Reels porque <em>não quer aparecer?</em></h1>
+      <div class="peca balao treme" style="--r:5deg;left:62%;top:52%">Amanhã eu gravo…</div>
+    </div>
+    <div class="cena" data-de="0.15" data-ate="0.28">
+      <p class="frase titulo">Seu Reel sai <em>sem câmera</em> e sem editar</p>
+      <div class="peca neon" style="--r:-4deg">Sem aparecer</div>
+    </div>
+    <div class="cena" data-de="0.29" data-ate="0.42">
+      <p class="frase titulo">Você responde <em>5 perguntas.</em> Uma vez só.</p>
+      <div class="peca numero"><b>5</b><small>perguntas sobre a sua marca</small></div>
+    </div>
+    <div class="cena" data-de="0.43" data-ate="0.63">
+      <p class="frase titulo">Depois, a Fábrica <em>só pergunta</em> uma coisa</p>
+      <div class="peca caixa"><div class="campo" data-digita="Sobre o que é o Reel de hoje?"></div><div class="bt">Fazer</div></div>
+    </div>
+    <div class="cena" data-de="0.64" data-ate="0.78">
+      <p class="frase titulo">E entrega o Reel <em>pronto</em></p>
+      <div class="peca lista">
+        <div style="--i:0"><i>✓</i>Roteiro com gancho</div>
+        <div style="--i:1"><i>✓</i>Voz de IA ou a sua</div>
+        <div style="--i:2"><i>✓</i>Cenas que se mexem</div>
+        <div style="--i:3"><i>✓</i>Legenda e chamada</div>
+      </div>
+    </div>
+    <div class="cena" data-de="0.79" data-ate="1">
+      <p class="frase titulo">Sua <em>Fábrica de Reels</em> no automático</p>
+      <div class="chamada-cine">
+        <p>Você só diz o tema e aprova. O resto sai da Fábrica.</p>
+        <a class="botao" href="#oferta">Quero a minha Fábrica →</a>
+      </div>
+    </div>
+
+    <div class="dica" aria-hidden="true">role</div>
+    <div class="barra" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="bloco demo">
+  <div class="surge">
+    <span class="chapeu">Feito pela Fábrica</span>
+    <h2 class="titulo">Este Reel não teve <em>câmera</em> nem edição</h2>
+    <p class="lead">Narração com a voz da IA, cenas ilustradas que se mexem, frase grande entrando palavra por palavra e chamada final. É assim que a Fábrica entrega cada Reel, nas cores e com a mascote da sua marca.</p>
+    <div class="pecas">
+      <span>Mascote da sua marca</span><span>Cena por frase</span><span>Frase no topo</span><span>Balões e neon</span><span>Lista que acende</span><span>Legenda pronta</span>
+    </div>
+  </div>
+  <div class="celular surge">
+    <video src="assets/fabrica/reel-demo.mp4" poster="assets/fabrica/reel-demo.webp" muted loop playsinline preload="none"></video>
+    <button class="som" type="button">🔊 Ouvir</button>
+  </div>
+</section>
+
+<section class="bloco" id="como">
+  <div class="surge">
+    <span class="chapeu">Como funciona</span>
+    <h2 class="titulo">Três passos. <em>Um Reel pronto.</em></h2>
+    <p class="lead">Funciona dentro do app do Claude, no seu computador. Você conversa; a Fábrica faz.</p>
+  </div>
+  <div class="passos">
+    <article class="passo surge"><img src="assets/fabrica/cena-03.webp" alt="" loading="lazy"><div><b>1</b><h3>5 perguntas, uma vez</h3><p>Seu nome e @, seu nicho, suas cores, a voz e a chamada final. A Fábrica cria até a mascote da sua marca.</p></div></article>
+    <article class="passo surge"><img src="assets/fabrica/cena-04.webp" alt="" loading="lazy"><div><b>2</b><h3>Uma pergunta por Reel</h3><p>"Sobre o que é o Reel de hoje?" Sem ideia? Você recebe 3 temas para o seu nicho e escolhe.</p></div></article>
+    <article class="passo surge"><img src="assets/fabrica/cena-05.webp" alt="" loading="lazy"><div><b>3</b><h3>Aprova e recebe</h3><p>Você lê o roteiro antes de gastar qualquer crédito. Aprovou, recebe o Reel pronto com a legenda do post.</p></div></article>
+  </div>
+</section>
+
+<section class="bloco" id="oferta">
+  <div class="surge">
+    <span class="chapeu">Escolha a sua Fábrica</span>
+    <h2 class="titulo">Do Reel animado ao <em>seu vídeo editado</em></h2>
+  </div>
+  <div class="planos">
+    <article class="plano surge">
+      <small>Básico</small>
+      <h3>Fábrica de Reels no Automático</h3>
+      <div class="preco"><sup>R$</sup>67</div>
+      <p class="frase">Responda 5 perguntas e receba seu Reel pronto, com textos, imagens e animações. Sem ideia do que postar? Receba 3 sugestões de temas para o seu nicho.</p>
+      <ul>
+        <li>Reel animado com mascote e cenas da sua marca</li>
+        <li>Narração com voz de IA ou com o áudio que você gravar</li>
+        <li>Roteiros com fórmulas de gancho</li>
+        <li>Legenda do post e comentário fixado</li>
+      </ul>
+      <a class="botao" data-checkout="automatico" href="#oferta">Quero o No Automático</a>
+    </article>
+    <article class="plano destaque surge">
+      <span class="selo">Mais completo</span>
+      <small>Intermediário</small>
+      <h3>Fábrica de Reels Studio</h3>
+      <div class="preco"><sup>R$</sup>97</div>
+      <p class="frase">Envie seu vídeo bruto e receba um Reel editado com animações criadas para a sua gravação.</p>
+      <ul>
+        <li>Tudo do No Automático</li>
+        <li>Corta erros e silêncios, legenda e anima o seu vídeo</li>
+        <li>Letreiro atrás de você e chamada final</li>
+        <li>Posta e responde comentários, sempre com o seu ok</li>
+        <li>Lê os números dos seus Reels e o roteiro do dia pronto</li>
+      </ul>
+      <a class="botao" data-checkout="studio" href="#oferta">Quero o Studio</a>
+    </article>
+    <article class="plano breve surge">
+      <small>Em breve</small>
+      <h3>Fábrica de Reels com Seu Clone</h3>
+      <div class="preco"><sup>R$</sup>147</div>
+      <p class="frase">Receba Reels com seu clone digital, com sua imagem e sua voz, sem precisar gravar cada vídeo.</p>
+      <ul><li>Tudo do Studio</li><li>Seu clone de IA falando por você</li><li>Quem comprar antes sobe pagando só a diferença</li></ul>
+      <a class="botao botao--vazado" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Entrar na lista de espera</a>
+    </article>
+  </div>
+  <p class="nota">Pagamento seguro pela Kiwify. Você recebe o acesso na hora, por e-mail, com o guia de instalação passo a passo.</p>
+</section>
+
+<section class="bloco" id="precisa">
+  <div class="surge">
+    <span class="chapeu">Sem surpresa</span>
+    <h2 class="titulo">O que você <em>precisa ter</em></h2>
+    <p class="lead">A Fábrica roda nas ferramentas que você assina. Ela avisa o custo antes de gastar qualquer crédito.</p>
+  </div>
+  <div class="precisa">
+    <div class="surge"><b>Assinatura paga do Claude</b><p>E o app do Claude no computador (Windows ou Mac). Na primeira vez, a Fábrica instala sozinha o que falta.</p></div>
+    <div class="surge"><b>ElevenLabs</b><p>Para a voz e as imagens. A conta grátis serve para testar; para postar com fins comerciais, o ElevenLabs pede um plano pago. Prefere a sua voz? Grave o áudio no celular.</p></div>
+    <div class="surge"><b>Google Flow (opcional)</b><p>Para as cenas ganharem movimento. Usa os créditos do seu plano Google. Sem ele, as cenas ficam paradas e a câmera anda.</p></div>
+    <div class="surge"><b>Instagram profissional (Studio)</b><p>Só para postar, responder e ler os números pelo Claude. Nada é postado sem o seu ok.</p></div>
+  </div>
+</section>
+
+<section class="bloco" id="perguntas">
+  <div class="surge">
+    <span class="chapeu">Perguntas</span>
+    <h2 class="titulo">Ficou alguma <em>dúvida?</em></h2>
+  </div>
+  <div class="surge">
+    <details><summary>Preciso saber editar vídeo ou mexer com programação?</summary><p>Não. Você conversa com o Claude em português. Ele instala o que precisa, faz as perguntas e mostra tudo para você aprovar.</p></details>
+    <details><summary>Preciso aparecer nos vídeos?</summary><p>Não. No No Automático, o Reel é todo animado, com voz de IA ou com o seu áudio. No Studio, se quiser, você grava e a Fábrica edita.</p></details>
+    <details><summary>Quanto gasto de créditos por Reel?</summary><p>Depende das ferramentas que você usa. Antes de gerar, a Fábrica mostra o custo e espera o seu ok. O roteiro é sempre aprovado antes de gastar crédito de voz.</p></details>
+    <details><summary>Funciona no celular?</summary><p>A Fábrica roda no app do Claude no computador. O Reel pronto você posta do celular normalmente (ou pelo Claude, no Studio).</p></details>
+    <details><summary>A Fábrica garante seguidores ou vendas?</summary><p>Não. Ela ajuda você a postar com constância e com qualidade. Resultado depende do seu nicho, da sua oferta e da sua frequência.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pela Kiwify: se não for para você, pede o reembolso.</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <img src="assets/fabrica/mascote.webp" alt="Quentinho, a mascote da Fábrica">
+  <h2 class="titulo surge" style="font-size:clamp(34px,5.4vw,70px)">Seu próximo Reel <em>sai quentinho</em></h2>
+  <p class="lead surge" style="margin:14px auto 30px">Responda 5 perguntas e deixe a Fábrica trabalhar.</p>
+  <a class="botao surge" href="#oferta">Escolher a minha Fábrica →</a>
+</section>
+
+<footer>
+  <p>Fábrica de Reels é um produto <a href="index.html">souaracele</a>. Vídeos com voz ou imagem de IA devem ser marcados como conteúdo feito com IA.</p>
+</footer>
+
+<script>
+/* Links de compra (Kiwify) — preencher quando os produtos estiverem criados */
+const CHECKOUT = { automatico: "", studio: "" };
+document.querySelectorAll("[data-checkout]").forEach((a) => { const u = CHECKOUT[a.dataset.checkout]; if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; } });
+
+(() => {
+  const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const TOTAL = 204, src = (i) => `assets/fabrica/frames/f_${String(i + 1).padStart(4, "0")}.webp`;
+  const cine = document.querySelector(".cine"), palco = cine.querySelector(".palco");
+  const canvas = palco.querySelector("canvas"), ctx = canvas.getContext("2d");
+  const cenas = [...cine.querySelectorAll(".cena")];
+  const topo = document.getElementById("topo");
+  const quadros = new Array(TOTAL);
+  let alvo = 0, atual = 0, desenhado = -1;
+
+  // palavras da frase entram uma a uma
+  cenas.forEach((c) => { const f = c.querySelector(".frase"); if (!f) return;
+    const html = f.innerHTML.replace(/<em>(.*?)<\/em>/g, (m, t) => t.split(/\s+/).map((w) => `§${w}`).join(" "));
+    f.innerHTML = html.split(/\s+/).filter(Boolean).map((w, i) => w.startsWith("§") ? `<span style="--i:${i}"><em>${w.slice(1)}</em></span>` : `<span style="--i:${i}">${w}</span>`).join(" "); });
+
+  const carregar = (i) => { if (quadros[i]) return quadros[i]; const im = new Image(); im.decoding = "async"; im.src = src(i);
+    im.onload = () => { if (desenhado < 0 || Math.round(atual) === i) desenhar(i, true); }; return (quadros[i] = im); };
+  carregar(0);
+  if (!reduzir) { const fila = []; for (const p of [8, 4, 2, 1]) for (let i = 0; i < TOTAL; i += p) if (!fila.includes(i)) fila.push(i);
+    let k = 0; const lote = () => { for (let n = 0; n < 6 && k < fila.length; n++) carregar(fila[k++]); if (k < fila.length) setTimeout(lote, 50); }; lote(); }
+  const pronto = (i) => quadros[i] && quadros[i].complete && quadros[i].naturalWidth;
+  const perto = (i) => { for (let d = 0; d < TOTAL; d++) { if (pronto(i - d)) return i - d; if (pronto(i + d)) return i + d; } return -1; };
+
+  function ajustar() { const dpr = Math.min(devicePixelRatio || 1, 2); canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientHeight * dpr); desenhado = -1; desenhar(Math.round(atual), true); }
+  function desenhar(i, forcar) {
+    const j = perto(i); if (j < 0 || (j === desenhado && !forcar)) return;
+    const im = quadros[j], cw = canvas.width, ch = canvas.height;
+    const capa = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
+    if (cw / ch > 0.8) {
+      // tela larga: fundo desfocado + o filme vertical inteiro no centro
+      ctx.filter = "blur(28px) brightness(.45)"; const w = im.naturalWidth * capa, h = im.naturalHeight * capa;
+      ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); ctx.filter = "none";
+      const cont = Math.min(cw / im.naturalWidth, ch / im.naturalHeight), w2 = im.naturalWidth * cont, h2 = im.naturalHeight * cont;
+      ctx.drawImage(im, (cw - w2) / 2, (ch - h2) / 2, w2, h2);
+    } else {
+      const w = im.naturalWidth * capa, h = im.naturalHeight * capa; ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+    desenhado = j;
+  }
+  const progresso = () => { const r = cine.getBoundingClientRect(); const curso = cine.offsetHeight - innerHeight; return Math.min(1, Math.max(0, -r.top / (curso || 1))); };
+  function rolar() {
+    const p = progresso(); alvo = p * (TOTAL - 1);
+    palco.style.setProperty("--p", p.toFixed(4));
+    cine.classList.toggle("andou", p > 0.01);
+    topo.classList.toggle("rolou", scrollY > 40);
+    cenas.forEach((c) => { const ativa = p >= +c.dataset.de && (p < +c.dataset.ate || (+c.dataset.ate >= 1 && p >= 1));
+      if (ativa && !c.classList.contains("ativa")) digitar(c); c.classList.toggle("ativa", ativa); });
+  }
+  function laco() { atual += (alvo - atual) * (reduzir ? 1 : 0.18); desenhar(Math.round(atual)); requestAnimationFrame(laco); }
+  function digitar(c) { const campo = c.querySelector("[data-digita]"); if (!campo) return; const t = campo.dataset.digita; let n = 0;
+    clearInterval(campo._t); campo.innerHTML = "<i></i>"; setTimeout(() => { campo._t = setInterval(() => { n++; campo.innerHTML = t.slice(0, n) + "<i></i>"; if (n >= t.length) clearInterval(campo._t); }, 45); }, 500); }
+
+  addEventListener("resize", ajustar); addEventListener("scroll", rolar, { passive: true });
+  ajustar(); rolar(); laco();
+
+  // faíscas douradas subindo
+  const fc = palco.querySelector(".faiscas"), fx = fc.getContext("2d"); let pts = [];
+  const iniciaF = () => { fc.width = fc.clientWidth; fc.height = fc.clientHeight; pts = Array.from({ length: Math.min(60, Math.round(fc.width * fc.height / 22000)) }, () => ({ x: Math.random() * fc.width, y: Math.random() * fc.height, r: Math.random() * 2 + .6, v: Math.random() * .6 + .2, f: Math.random() * 6 })); };
+  const faisca = () => { fx.clearRect(0, 0, fc.width, fc.height); for (const p of pts) { p.y -= p.v; p.f += .03; if (p.y < -10) { p.y = fc.height + 10; p.x = Math.random() * fc.width; }
+      fx.beginPath(); fx.arc(p.x + Math.sin(p.f) * 10, p.y, p.r, 0, 7); fx.fillStyle = `rgba(255,191,0,${.35 + Math.sin(p.f * 2) * .25})`; fx.shadowColor = "#FFBF00"; fx.shadowBlur = 10; fx.fill(); }
+    requestAnimationFrame(faisca); };
+  if (!reduzir) { iniciaF(); addEventListener("resize", iniciaF); faisca(); }
+
+  // seções que surgem
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visto"); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll(".surge").forEach((el) => io.observe(el));
+
+  // reel de amostra: toca quando aparece; botão de som
+  const v = document.querySelector(".celular video"), som = document.querySelector(".som");
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !reduzir) v.play().catch(() => {}); else v.pause(); }, { threshold: .4 }).observe(v);
+  som.addEventListener("click", () => { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); } som.textContent = v.muted ? "🔊 Ouvir" : "🔇 Sem som"; });
+})();
+</script>
+</body>
+</html>
