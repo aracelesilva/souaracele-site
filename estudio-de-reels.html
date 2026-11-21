@@ -83,7 +83,13 @@
   .surge { opacity:0; transform:translateY(40px); transition:opacity .8s, transform .8s; }
   .surge.visto { opacity:1; transform:none; }
 
-  .demo { display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(30px,5vw,80px); align-items:center; }
+  .demo { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(30px,5vw,70px); align-items:center; }
+  .comparar { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .comparar figure { margin:0; }
+  .comparar .celular { width:100%; max-width:300px; }
+  .comparar figcaption { text-align:center; margin-top:14px; }
+  .comparar figcaption b { display:block; font-size:17px; }
+  .comparar figcaption span { display:inline-block; margin-top:6px; padding:5px 12px; border-radius:999px; background:#FFBF0014; border:1px solid var(--linha); color:var(--ambar); font-size:13px; font-weight:700; }
   .celular { position:relative; width:min(340px,80vw); margin:0 auto; aspect-ratio:9/16; border-radius:42px; padding:12px; background:#1b1814; box-shadow:0 0 0 2px #FFBF0044, 0 40px 120px #FFBF0022, 0 30px 80px #000; }
   .celular video { width:100%; height:100%; object-fit:cover; border-radius:32px; display:block; background:#000; }
   .som { position:absolute; right:22px; bottom:22px; border:0; border-radius:999px; padding:10px 16px; background:#0A0A0ACC; color:#fff; font-weight:700; cursor:pointer; }
@@ -121,7 +127,14 @@
   .antes p b { display:inline; color:var(--texto); }
   .antes p { color:var(--mudo); font-size:14.5px; }
   .o-que { margin-top:6px; color:#E9E1D2; max-width:780px; }
-  .preco--breve { font-size:34px !important; color:var(--ambar); }
+  .espera { display:grid; gap:10px; margin-top:4px; }
+  .espera[hidden], .abre-espera[hidden] { display:none; }
+  .espera input[type=text], .espera input[type=email] { width:100%; padding:14px 16px; border-radius:14px; border:1px solid #FFBF0055; background:#0A0A0A; color:#fff; font:500 16px Inter,sans-serif; }
+  .espera label { display:flex; gap:10px; align-items:flex-start; color:var(--mudo); font-size:14px; }
+  .espera label input { margin-top:3px; accent-color:var(--ambar); }
+  .espera .botao { justify-content:center; border:0; cursor:pointer; font-family:inherit; }
+  .espera-msg { min-height:1.2em; font-weight:600; color:var(--ambar); }
+  button.botao { cursor:pointer; font-family:inherit; }
   .creditos { margin-top:22px; padding:28px; border-radius:26px; background:var(--cartao); border:1px solid var(--linha); }
   .creditos h3 { font-family:'Archivo Black',Inter; text-transform:uppercase; font-size:clamp(20px,2vw,26px); }
   .creditos-lead { color:var(--mudo); margin:6px 0 18px; }
@@ -130,6 +143,7 @@
   .creditos-grade b { display:block; color:var(--ambar); margin-bottom:6px; font-size:17px; }
   .creditos-grade p { color:var(--mudo); font-size:14.5px; }
   .creditos-grade strong { color:var(--texto); }
+  .creditos-grade a { color:var(--ambar); }
   @media (max-width: 1100px) { .creditos-grade { grid-template-columns:repeat(2,1fr); } }
   @media (max-width: 860px) { .antes, .creditos-grade { grid-template-columns:1fr; } }
 
@@ -152,6 +166,7 @@
 
   @media (max-width: 860px) {
     .demo, .passos, .planos, .precisa { grid-template-columns:1fr; }
+    .comparar { gap:12px; } .comparar .celular { border-radius:28px; padding:8px; } .comparar .celular video { border-radius:22px; } .som { right:12px; bottom:12px; padding:8px 12px; font-size:13px; }
     .plano.destaque { transform:none; }
     .passo { min-height:360px; }
     .cine { height:640vh; }
@@ -222,14 +237,26 @@
   <div class="surge">
     <span class="chapeu">Feito pelo Estúdio</span>
     <h2 class="titulo">Este Reel não teve <em>câmera</em> nem edição</h2>
-    <p class="lead">Narração com a voz da IA, cenas ilustradas que se mexem, frase grande entrando palavra por palavra e chamada final. É assim que o Estúdio entrega cada Reel, nas cores e com a mascote da sua marca.</p>
+    <p class="lead">Narração com a voz da IA, cenas ilustradas, frase grande entrando palavra por palavra e chamada final. É assim que o Estúdio entrega cada Reel, nas cores e com a mascote da sua marca. Compare o mesmo Reel nas duas versões: você escolhe, a cada vídeo, se as cenas ganham vida.</p>
     <div class="pecas">
       <span>Mascote da sua marca</span><span>Cena por frase</span><span>Frase no topo</span><span>Balões e neon</span><span>Lista que acende</span><span>Legenda pronta</span>
     </div>
   </div>
-  <div class="celular surge">
-    <video src="assets/fabrica/reel-demo.mp4?v=2" poster="assets/fabrica/reel-demo.webp?v=2" muted loop playsinline preload="none"></video>
-    <button class="som" type="button">🔊 Ouvir</button>
+  <div class="comparar surge" id="comparar">
+    <figure>
+      <div class="celular">
+        <video src="assets/fabrica/reel-demo-parado.mp4" poster="assets/fabrica/reel-demo-parado.webp" muted loop playsinline preload="none"></video>
+        <button class="som" type="button">🔊 Ouvir</button>
+      </div>
+      <figcaption><b>Cenas com câmera andando</b><span>Sem créditos de movimento</span></figcaption>
+    </figure>
+    <figure>
+      <div class="celular">
+        <video src="assets/fabrica/reel-demo.mp4?v=2" poster="assets/fabrica/reel-demo.webp?v=2" muted loop playsinline preload="none"></video>
+        <button class="som" type="button">🔊 Ouvir</button>
+      </div>
+      <figcaption><b>Cenas com vida</b><span>Usa créditos de movimento no Google Flow</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -242,7 +269,7 @@
   <div class="passos">
     <article class="passo surge"><img src="assets/fabrica/cena-03.webp" alt="" loading="lazy"><div><b>1</b><h3>5 perguntas, uma vez</h3><p>Seu nome e @, seu nicho, suas cores, a voz e a chamada final. O Estúdio cria até a mascote da sua marca.</p></div></article>
     <article class="passo surge"><img src="assets/fabrica/cena-04.webp" alt="" loading="lazy"><div><b>2</b><h3>Uma pergunta por Reel</h3><p>"Sobre o que é o Reel de hoje?" Sem ideia? Você recebe 3 temas para o seu nicho e escolhe.</p></div></article>
-    <article class="passo surge"><img src="assets/fabrica/cena-05.webp" alt="" loading="lazy"><div><b>3</b><h3>Aprova e recebe</h3><p>Você lê o roteiro antes de gastar qualquer crédito. Aprovou, recebe o Reel pronto com a legenda do post.</p></div></article>
+    <article class="passo surge"><img src="assets/fabrica/cena-05.webp" alt="" loading="lazy"><div><b>3</b><h3>Aprova e recebe</h3><p>Você aprova o roteiro antes de usar créditos de geração. Aprovou, recebe o Reel pronto com a legenda do post.</p></div></article>
   </div>
 </section>
 
@@ -284,10 +311,16 @@
     <article class="plano breve surge">
       <small>Avançado · Em breve</small>
       <h3>Estúdio de Reels com Seu Clone</h3>
-      <div class="preco preco--breve">Em breve</div>
       <p class="frase">Receba Reels com seu clone digital, com sua imagem e sua voz, sem precisar gravar cada vídeo.</p>
       <ul><li>Tudo do Edição</li><li>Seu clone de IA falando por você</li><li>Quem comprar antes sobe pagando só a diferença</li></ul>
-      <a class="botao botao--vazado" href="https://ig.me/m/souaracele.ia" target="_blank" rel="noopener">Entrar na lista de espera</a>
+      <button class="botao botao--vazado abre-espera" type="button" aria-expanded="false" aria-controls="espera">Entrar na lista de espera</button>
+      <form class="espera" id="espera" hidden>
+        <input name="nome" type="text" placeholder="Seu nome" autocomplete="name" required minlength="2">
+        <input name="email" type="email" placeholder="Seu melhor e-mail" autocomplete="email" required>
+        <label><input name="ok" type="checkbox" required> Aceito receber o aviso do lançamento e e-mails da souaracele.</label>
+        <button class="botao" type="submit">Avisar no lançamento</button>
+        <p class="espera-msg" role="status"></p>
+      </form>
     </article>
   </div>
   <div class="antes surge">
@@ -299,9 +332,9 @@
     <h3>Ferramentas e créditos, à parte</h3>
     <p class="creditos-lead">O Estúdio usa as ferramentas que você assina. Antes de gerar qualquer coisa, ele mostra o custo e espera o seu ok.</p>
     <div class="creditos-grade">
-      <div><b>🎙️ Narração</b><p>Com voz de IA, a narração usa créditos do ElevenLabs (cerca de 300 por Reel de 25 segundos; a conta grátis serve para testar, e para postar com fins comerciais o ElevenLabs pede plano pago). <strong>Se você gravar o próprio áudio, não gasta créditos para gerar a voz.</strong></p></div>
-      <div><b>🖼️ Imagens</b><p>As cenas ilustradas com a mascote da sua marca usam créditos de geração de imagem: no ElevenLabs, cerca de 200 por imagem (5 a 8 por Reel), ou no Google Flow, com os créditos do seu plano Google. A mascote é criada uma vez só.</p></div>
-      <div><b>🎬 Movimento</b><p>Opcional. Para as cenas ganharem vida (a mascote piscando, o vapor subindo), cada imagem vira um clipe no Google Flow, com cerca de 6 créditos do seu plano por clipe de 4 segundos. Sem isso, as cenas ficam paradas e a câmera anda, sem créditos.</p></div>
+      <div><b>🎙️ Narração</b><p>Com voz de IA, a narração usa créditos do ElevenLabs. Exemplo do nosso teste: uma narração de 22 a 24 segundos usou de 312 a 325 créditos. A conta grátis serve para testar; para postar com fins comerciais, o ElevenLabs pede plano pago. <strong>Se você gravar o próprio áudio, não gasta créditos para gerar a voz.</strong></p></div>
+      <div><b>🖼️ Imagens</b><p>As cenas ilustradas com a mascote da sua marca (de 5 a 8 por Reel) usam créditos de geração de imagem, no ElevenLabs ou no Google Flow, com os créditos do seu plano. O consumo varia conforme a ferramenta e o formato, e o Estúdio mostra o custo antes de gerar. A mascote é criada uma vez só.</p></div>
+      <div><b>🎬 Movimento</b><p>Opcional. Para as cenas ganharem vida (a mascote piscando, o vapor subindo), cada imagem vira um clipe curto no Google Flow, com os créditos do seu plano. O consumo varia conforme a duração e a qualidade escolhidas. Sem isso, as cenas ficam paradas e a câmera anda, sem créditos de movimento. <a href="#comparar">Veja a diferença nos dois vídeos</a>.</p></div>
       <div><b>✂️ Edição do seu vídeo</b><p>No Estúdio de Reels Edição, cortar, legendar e animar o vídeo que você gravou não gasta créditos de IA. Para postar e ler os números pelo Claude, é preciso Instagram profissional ligado pelo Composio.</p></div>
     </div>
   </div>
@@ -349,6 +382,28 @@
 </footer>
 
 <script>
+/* Lista de espera do Clone: grava na Planilha "Lista de e-mails - site souaracele" (Apps Script), com origem "lista-espera-clone" */
+(() => {
+  const URL_LISTA = "https://script.google.com/macros/s/AKfycbzezM2B7iV-GuGX0rDOTb_9r3F9y8uebo4Wk74AMjdWUbl6CSFfe0tl9Ob6qqZMKtWBLw/exec";
+  const abre = document.querySelector(".abre-espera"), form = document.getElementById("espera");
+  if (!abre || !form) return;
+  const msg = form.querySelector(".espera-msg");
+  abre.addEventListener("click", () => { form.hidden = false; abre.hidden = true; abre.setAttribute("aria-expanded", "true"); form.querySelector("input").focus(); });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const bt = form.querySelector('button[type=submit]'); bt.disabled = true; msg.textContent = "Enviando…";
+    try {
+      const r = await fetch(URL_LISTA, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ name: form.nome.value.trim(), email: form.email.value.trim(), consent: form.ok.checked, origem: "lista-espera-clone" }) });
+      const d = await r.json();
+      if (d.error && /já está na lista/i.test(d.error)) msg.textContent = "Seu e-mail já está na lista da souaracele. Você vai receber o aviso do lançamento do Clone ☕";
+      else if (d.error) { msg.textContent = d.error; bt.disabled = false; return; }
+      else msg.textContent = "Prontinho! Vamos te avisar quando o Clone sair ☕";
+      form.querySelectorAll("input").forEach((i) => (i.disabled = true));
+    } catch { msg.textContent = "Não deu para enviar agora. Tente de novo em instantes."; bt.disabled = false; }
+  });
+})();
+
 /* Links de compra (Kiwify) — preencher quando os produtos estiverem criados */
 const CHECKOUT = { automatico: "https://pay.kiwify.com.br/76dsPHo", studio: "https://pay.kiwify.com.br/bVTknTV" };
 document.querySelectorAll("[data-checkout]").forEach((a) => { const u = CHECKOUT[a.dataset.checkout]; if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; } });
@@ -421,9 +476,16 @@ document.querySelectorAll("[data-checkout]").forEach((a) => { const u = CHECKOUT
   document.querySelectorAll(".surge").forEach((el) => io.observe(el));
 
   // reel de amostra: toca quando aparece; botão de som
-  const v = document.querySelector(".celular video"), som = document.querySelector(".som");
-  new IntersectionObserver(([e]) => { if (e.isIntersecting && !reduzir) v.play().catch(() => {}); else v.pause(); }, { threshold: .4 }).observe(v);
-  som.addEventListener("click", () => { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); } som.textContent = v.muted ? "🔊 Ouvir" : "🔇 Sem som"; });
+  const vids = [...document.querySelectorAll(".celular video")];
+  vids.forEach((v) => {
+    new IntersectionObserver(([e]) => { if (e.isIntersecting && !reduzir) v.play().catch(() => {}); else v.pause(); }, { threshold: .4 }).observe(v);
+    const som = v.parentElement.querySelector(".som");
+    som.addEventListener("click", () => {
+      const ligar = v.muted;
+      vids.forEach((o) => { o.muted = true; o.parentElement.querySelector(".som").textContent = "🔊 Ouvir"; });  // só um com som por vez
+      if (ligar) { v.muted = false; v.currentTime = 0; v.play(); som.textContent = "🔇 Sem som"; }
+    });
+  });
 })();
 </script>
 </body>
