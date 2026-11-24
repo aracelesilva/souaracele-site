@@ -72,6 +72,14 @@
   @media (max-width: 760px) { .momento, .momento--direita { left: 16px; right: 16px; bottom: 10vh; } .momento--centro { left: 50%; right: auto; } }
   @media (prefers-reduced-motion: reduce) { .cine { height: 100svh; } .momento:not(:first-of-type), .cine-dica { display: none; } .momento:first-of-type { opacity: 1; transform: none; filter: none; } }
 
+  /* Vídeo */
+  .assista { background: #14231A; color: #F3EAD9; }
+  .assista-grade { display: grid; grid-template-columns: 1fr minmax(260px, 380px); gap: 56px; align-items: center; }
+  .assista h2 { color: #F3EAD9; }
+  .assista p { opacity: .85; max-width: 520px; }
+  .assista-video { width: 100%; aspect-ratio: 9/16; border-radius: 20px; background: #000; box-shadow: 0 30px 70px rgb(0 0 0 / .5); display: block; }
+  @media (max-width: 860px) { .assista-grade { grid-template-columns: 1fr; gap: 28px; } .assista-video { max-width: 380px; margin: 0 auto; } }
+
   /* Dor */
   .dor-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .dor-foto { border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgb(31 58 43 / .25); }
@@ -174,6 +182,18 @@
     </div>
   </div>
 </header>
+
+<section class="assista" id="video" aria-label="Vídeo da cartilha">
+  <div class="larg assista-grade">
+    <div>
+      <p class="sobre" style="color:#E59A72">Assista com o som ligado</p>
+      <h2>Ninguém termina um casamento por causa de um boleto.</h2>
+      <p>Termina pela décima briga por causa dele. Em um minuto, veja como a cartilha ajuda vocês a parar isso enquanto ainda é só uma conversa difícil.</p>
+      <a class="botao comprar" href="#oferta">Quero a cartilha <small>· R$ 19,90</small></a>
+    </div>
+    <video class="assista-video" src="assets/dsb/video-cartilha.mp4" poster="assets/dsb/video-cartilha-capa.webp" controls playsinline preload="none"></video>
+  </div>
+</section>
 
 <section>
   <div class="larg dor-grade">
