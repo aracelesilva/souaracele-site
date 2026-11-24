@@ -51,8 +51,17 @@
   /* Abertura cinematográfica */
   .topo-fixo { position: fixed; inset: 0 0 auto; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 14px max(16px, 4vw); color: #F3EAD9; transition: background .4s; }
   .topo-fixo b { font: 600 19px "Fraunces"; }
+  .topo-fixo { gap: 12px; background: linear-gradient(to bottom, rgb(10 20 14 / .55), transparent); }
+  .topo-fixo b { line-height: 1.15; min-width: 0; }
   .topo-fixo b span { font-weight: 400; font-style: italic; }
-  @media (max-width: 420px) { .topo-fixo b { font-size: 16px; } .topo-fixo a { padding: 7px 12px; font-size: 13px; } }
+  .topo-fixo a { white-space: nowrap; flex-shrink: 0; }
+  @media (max-width: 600px) {
+    .topo-fixo { padding: 10px 16px; }
+    .topo-fixo b { font-size: 17px; }
+    .topo-fixo b span { display: block; font-size: 14px; opacity: .9; }
+    .topo-fixo a { padding: 8px 14px; font-size: 13px; }
+  }
+  @media (max-width: 360px) { .topo-fixo b { font-size: 15px; } .topo-fixo b span { font-size: 13px; } .topo-fixo a { padding: 7px 11px; font-size: 12px; } }
   .topo-fixo a { color: #F3EAD9; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid rgb(243 234 217 / .4); padding: 8px 16px; border-radius: 99px; }
   .topo-fixo.rolou { background: rgb(31 58 43 / .92); backdrop-filter: blur(10px); }
   .cine { position: relative; height: 420vh; background: #14231A; }
