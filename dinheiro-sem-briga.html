@@ -51,6 +51,8 @@
   /* Abertura cinematográfica */
   .topo-fixo { position: fixed; inset: 0 0 auto; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 14px max(16px, 4vw); color: #F3EAD9; transition: background .4s; }
   .topo-fixo b { font: 600 19px "Fraunces"; }
+  .topo-fixo b span { font-weight: 400; font-style: italic; }
+  @media (max-width: 420px) { .topo-fixo b { font-size: 16px; } .topo-fixo a { padding: 7px 12px; font-size: 13px; } }
   .topo-fixo a { color: #F3EAD9; text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid rgb(243 234 217 / .4); padding: 8px 16px; border-radius: 99px; }
   .topo-fixo.rolou { background: rgb(31 58 43 / .92); backdrop-filter: blur(10px); }
   .cine { position: relative; height: 420vh; background: #14231A; }
@@ -146,7 +148,7 @@
 </head>
 <body>
 
-<div class="topo-fixo"><b>Dinheiro sem Briga</b><a href="#oferta">Quero a cartilha</a></div>
+<div class="topo-fixo"><b>Dinheiro sem Briga <span>para Casais</span></b><a href="#oferta">Quero a cartilha</a></div>
 
 <!-- ABERTURA CINEMATOGRÁFICA: o vídeo da mesa anda com a rolagem -->
 <section class="cine" aria-label="Abertura">
