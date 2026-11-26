@@ -156,6 +156,9 @@
   .barra .botao { width: 100%; padding: 16px; }
   @media (max-width: 760px) { .barra.mostrar { display: block; } body { padding-bottom: 76px; } }
 </style>
+<!-- Pixel da Meta (rastreador do Facebook e Instagram) -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","278659631471679");fbq("track","PageView");fbq("track","ViewContent",{content_name:"Dinheiro sem Briga para Casais",value:19.90,currency:"BRL"});</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=278659631471679&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -319,7 +322,8 @@
   // Coloque aqui o link do checkout da Kiwify quando o produto estiver criado
   const CHECKOUT = "https://pay.kiwify.com.br/3sybR32";
   document.querySelectorAll("[data-checkout]").forEach((a) => {
-    if (CHECKOUT) { a.href = CHECKOUT; a.target = "_blank"; a.rel = "noopener"; }
+    if (CHECKOUT) { a.href = CHECKOUT; a.target = "_blank"; a.rel = "noopener";
+      a.addEventListener("click", () => { if (window.fbq) fbq("track", "InitiateCheckout", { value: 19.90, currency: "BRL", content_name: "Dinheiro sem Briga para Casais" }); }); }
     else a.addEventListener("click", (e) => { e.preventDefault(); a.textContent = "Em breve: link de compra"; });
   });
   const barra = document.querySelector(".barra"), oferta = document.querySelector("#oferta");
