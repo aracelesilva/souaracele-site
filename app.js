@@ -7,7 +7,7 @@
   /* ── Rolagem que toca o vídeo ─────────────────────────────────────────── */
   const cine = document.querySelector(".cine");
   const canvas = cine && cine.querySelector(".cine-canvas");
-  if (cine && canvas && S.frames && S.frames.total) {
+  if (cine && canvas && S.frames && S.frames.total && cine.offsetParent !== null) {
     const ctx = canvas.getContext("2d");
     const total = S.frames.total;
     const padrao = celular ? S.frames.mobile : S.frames.desktop;

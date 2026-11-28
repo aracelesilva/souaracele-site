@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script>/* 28/11: quem chega por anúncio ou grupo (fbclid/utm/Facebook) pula a abertura e cai direto na oferta */try{var q=location.search,r=document.referrer;if(/[?&](fbclid|utm_[a-z]+)=/.test(q)||/facebook\.com|instagram\.com|fb\.me/.test(r))document.documentElement.classList.add("sem-cine")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dinheiro sem Briga para Casais · cartilha para imprimir</title>
 <script>if(/.html$/.test(location.pathname))history.replaceState(null,"",location.pathname.replace(/(index)?.html$/,"")+location.search+location.hash)</script>
@@ -156,8 +157,11 @@
 
   .aviso { font-size: 14px; color: var(--suave); border-top: 1px solid var(--linha); padding: 32px 0 48px; }
   .barra { position: fixed; left: 0; right: 0; bottom: 0; background: rgb(31 58 43 / .96); padding: 12px 16px; display: none; z-index: 20; }
-  .barra .botao { width: 100%; padding: 16px; }
+  .barra .botao { width: 100%; padding: 14px 12px; display: block; text-align: center; white-space: nowrap; font-size: 16px; }
   @media (max-width: 760px) { .barra.mostrar { display: block; } body { padding-bottom: 76px; } }
+  .sem-cine .cine { display: none; }
+  .prazo { font-size: 14px; color: #E59A72; margin: 10px 0 0; font-weight: 600; }
+  @media (max-width: 600px) { .prazo { text-align: center; } }
 </style>
 <!-- Pixel da Meta (rastreador do Facebook e Instagram) -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","278659631471679");fbq("track","PageView");fbq("track","ViewContent",{content_name:"Dinheiro sem Briga para Casais",value:19.90,currency:"BRL"});</script>
@@ -192,6 +196,7 @@
       <h1>Dinheiro<span>sem Briga</span><small>para Casais</small></h1>
       <p class="lead">7 conversas para vocês pararem de brigar pela fatura e começarem a decidir juntos. Com cartas para recortar, caderno do casal e cartazes para a geladeira.</p>
       <a class="botao comprar" href="#oferta">Quero a cartilha <small>· R$ 19,90</small></a>
+      <p class="prazo" data-prazo="2026-11-30">Preço de lançamento até 30/11 · depois R$ 27</p>
       <div class="garantias"><span>✓ PDF para imprimir hoje</span><span>✓ 7 dias de garantia</span><span>✓ Pagamento seguro</span></div>
     </div>
     <div class="pilha" aria-hidden="true">
@@ -312,18 +317,22 @@
   <p>Material educativo. Não substitui orientação financeira individual, terapia, mediação, contabilidade ou orientação jurídica, e não recomenda produtos financeiros. Fonte citada: Serasa e Opinion Box (2025), pesquisa sobre dinheiro e relacionamentos.</p>
 </footer>
 
-<div class="barra"><a class="botao comprar" href="#oferta">Quero a cartilha · R$ 19,90</a></div>
+<div class="barra"><a class="botao comprar" href="#oferta">Quero a cartilha · R$ 19,90<span data-prazo="2026-11-30"> · só até 30/11</span></a></div>
 
 <script>
   // Quadros do vídeo da mesa (o app.js do site toca o vídeo com a rolagem)
   window.SITE = { frames: { total: 159, desktop: "assets/dsb/frames/desktop/f_{n}.webp", mobile: "assets/dsb/frames/mobile/f_{n}.webp" } };
 </script>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=6"></script>
 <script>
   const topoFixo = document.querySelector(".topo-fixo");
-  addEventListener("scroll", () => topoFixo.classList.toggle("rolou", scrollY > innerHeight * 3.2), { passive: true });
+  addEventListener("scroll", () => topoFixo.classList.toggle("rolou", scrollY > (document.querySelector(".cine").offsetHeight ? innerHeight * 3.2 : 10)), { passive: true });
   // Coloque aqui o link do checkout da Kiwify quando o produto estiver criado
   const CHECKOUT = "https://pay.kiwify.com.br/3sybR32";
+  // 28/11: todo botão "Quero a cartilha" vai direto para o pagamento (1 clique)
+  document.querySelectorAll('a[href="#oferta"]').forEach((a) => a.setAttribute("data-checkout", ""));
+  // textos de prazo somem sozinhos depois do lançamento
+  document.querySelectorAll("[data-prazo]").forEach((el) => { if (new Date() > new Date(el.dataset.prazo + "T23:59:59-03:00")) el.remove(); });
   document.querySelectorAll("[data-checkout]").forEach((a) => {
     if (CHECKOUT) { a.href = CHECKOUT; a.target = "_blank"; a.rel = "noopener";
       a.addEventListener("click", () => { if (window.fbq) fbq("track", "InitiateCheckout", { value: 19.90, currency: "BRL", content_name: "Dinheiro sem Briga para Casais" }); }); }
@@ -332,9 +341,9 @@
   const barra = document.querySelector(".barra"), oferta = document.querySelector("#oferta");
   addEventListener("scroll", () => {
     const r = oferta.getBoundingClientRect();
-    const fimCine = document.querySelector(".cine").offsetHeight;
-    barra.classList.toggle("mostrar", scrollY > fimCine && (r.top > innerHeight || r.bottom < 0));
+    barra.classList.toggle("mostrar", r.top > innerHeight || r.bottom < 0);
   }, { passive: true });
+  barra.classList.toggle("mostrar", true);
 </script>
 </body>
 </html>
