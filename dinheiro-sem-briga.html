@@ -157,8 +157,9 @@
 
   .aviso { font-size: 14px; color: var(--suave); border-top: 1px solid var(--linha); padding: 32px 0 48px; }
   .barra { position: fixed; left: 0; right: 0; bottom: 0; background: rgb(31 58 43 / .96); padding: 12px 16px; display: none; z-index: 20; }
-  .barra .botao { width: 100%; padding: 14px 12px; display: block; text-align: center; white-space: nowrap; font-size: 16px; }
-  @media (max-width: 760px) { .barra.mostrar { display: block; } body { padding-bottom: 76px; } }
+  .barra .botao { box-sizing: border-box; width: 100%; max-width: 100%; padding: 12px 14px; display: block; text-align: center; white-space: normal; font-size: 16px; line-height: 1.25; }
+  .barra .botao span[data-prazo] { display: block; font-size: 13px; font-weight: 600; opacity: .9; margin-top: 2px; }
+  @media (max-width: 760px) { .barra.mostrar { display: block; } body { padding-bottom: 92px; } }
   .sem-cine .cine { display: none; }
   .prazo { font-size: 14px; color: #E59A72; margin: 10px 0 0; font-weight: 600; }
   @media (max-width: 600px) { .prazo { text-align: center; } }
@@ -317,7 +318,7 @@
   <p>Material educativo. Não substitui orientação financeira individual, terapia, mediação, contabilidade ou orientação jurídica, e não recomenda produtos financeiros. Fonte citada: Serasa e Opinion Box (2025), pesquisa sobre dinheiro e relacionamentos.</p>
 </footer>
 
-<div class="barra"><a class="botao comprar" href="#oferta">Quero a cartilha · R$ 19,90<span data-prazo="2026-11-30"> · só até 30/11</span></a></div>
+<div class="barra"><a class="botao comprar" href="#oferta">Quero a cartilha · R$ 19,90<span data-prazo="2026-11-30">preço de lançamento só até 30/11</span></a></div>
 
 <script>
   // Quadros do vídeo da mesa (o app.js do site toca o vídeo com a rolagem)
